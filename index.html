@@ -70,7 +70,7 @@
 						<li>Tags</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -206,42 +206,6 @@
         <p>during the deploy, I found it is good to use eb cli, then do not need to compress the zip and upload the application version. Another  bad thing is using this way cause to remove the instance and build again every time, take more time.</p>
 <p>Good to use eb cli ,just update the new change without build new instance.</p>
 <p>but in the beginning, i have much issue with using eb cli.</p>
-<p><img src="image_10.png" alt="image alt text"></p>
-<p>Then I create a new repo and do again</p>
-<p>checkout a new branch and git commit, then</p>
-<p>eb init</p>
-<p>790  git clone <a href="https://github.com/highcharts/www.highcharts.com.git" target="_blank" rel="external">https://github.com/highcharts/www.highcharts.com.git</a></p>
-<p> 791  ls</p>
-<p> 792  cd www.highcharts.com/</p>
-<p> 793  git branch</p>
-<p> 794  git checkout  eb_deploy</p>
-<p> 795  ls</p>
-<p> 796  ls</p>
-<p> 797  git branch</p>
-<p> 798  git add –all</p>
-<p> 799  git commit -m “change folder structure”</p>
-<p> 800  git push origin eb_deploy</p>
-<p> 801  ls</p>
-<p> 802  cat Dockerrun.aws.json</p>
-<p> 803  history</p>
-<p> 804  eb status</p>
-<p> 805  eb status haiwTest-env</p>
-<p> 806  eb deploy haiwTest-env</p>
-<p> 810  ls</p>
-<p> 811  git status</p>
-<p> 812  eb logs</p>
-<p> 814  eb logs haiwTest-env</p>
-<p> 816  eb use haiwTest-env</p>
-<p> 819  eb init        都失败了  直到重新init 了一下</p>
-<p> 820  eb deploy    才可以deploy</p>
-<p> 821  eb deploy</p>
-<p>eb deploy 的流程</p>
-<p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_PHP_cakePHP.html" target="_blank" rel="external">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_PHP_cakePHP.html</a></p>
-<h1 id="Using-Git-with-the-EB-CLI"><a href="#Using-Git-with-the-EB-CLI" class="headerlink" title="Using Git with the EB CLI"></a><strong>Using Git with the EB CLI</strong></h1><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cli-git.html" target="_blank" rel="external">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cli-git.html</a></p>
-<p><a href="http://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/eb-cli3-getting-started.html" target="_blank" rel="external">http://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/eb-cli3-getting-started.html</a></p>
-<h1 id="Configuring-the-AWS-Command-Line-Interface"><a href="#Configuring-the-AWS-Command-Line-Interface" class="headerlink" title="Configuring the AWS Command Line Interface"></a><strong>Configuring the AWS Command Line Interface</strong></h1><p><a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html" target="_blank" rel="external">http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html</a></p>
-<p><img src="image_11.png" alt="image alt text"></p>
-
       
     </div>
     
@@ -250,6 +214,10 @@
       
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/04/Using-EB-CLI/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -293,93 +261,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Set-up-website-on-Elastic-Beanstalk-using-Multi-Container-PHP-FPM-Nginx"><a href="#Set-up-website-on-Elastic-Beanstalk-using-Multi-Container-PHP-FPM-Nginx" class="headerlink" title="# Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)"></a># Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)</h2><p>This guide shows you how to setup WebApp  on Elastic Beanstalk using the [PHP-FPM]and [Nginx] Docker images.</p>
+        <h2 id="Set-up-website-on-Elastic-Beanstalk-using-Multi-Container-PHP-FPM-Nginx"><a href="#Set-up-website-on-Elastic-Beanstalk-using-Multi-Container-PHP-FPM-Nginx" class="headerlink" title="Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)"></a>Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)</h2><p>This guide shows you how to setup WebApp  on Elastic Beanstalk using the [PHP-FPM]and [Nginx] Docker images.</p>
 <h2 id="The-procedure-of-making-this-work"><a href="#The-procedure-of-making-this-work" class="headerlink" title="The procedure of making this work"></a>The procedure of making this work</h2><p><a href="#heading=h.rilr6oluuna3">First step, covert docker compose file to Dockerrun.aws.json</a></p>
 <p><a href="#heading=h.txmc5fcrcsi1">Second step, link to RDS</a></p>
 <p>—-&gt;   Think of security group, the instance  need access to RDS</p>
 <p>—-&gt;   Connecting MYSQL RDS needs php-mysql inside docker</p>
 <p>—-&gt;   Upload prebuild or private docker image (PHP with php-mysql) to ECR</p>
 <hr>
-<h4 id="First-step-covert-docker-compose-file-to-Dockerrun-aws-json"><a href="#First-step-covert-docker-compose-file-to-Dockerrun-aws-json" class="headerlink" title="First step, covert docker compose file to Dockerrun.aws.json"></a>First step, covert docker compose file to <a href="https://github.com/highcharts/www.highcharts.com/blob/eb_deploy/Dockerrun.aws.json" target="_blank" rel="external">Dockerrun.aws.json</a></h4><p>Follow this tutorial  <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html" target="_blank" rel="external">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html</a></p>
-<p><strong>Topics</strong></p>
-<ul>
-<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_role" target="_blank" rel="external">Configure a Container Instance IAM Role</a></p>
-</li>
-<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_config" target="_blank" rel="external">Define Docker Containers</a></p>
-</li>
-<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_code" target="_blank" rel="external">Add Content</a></p>
-</li>
-<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_deploy" target="_blank" rel="external">Deploy to Elastic Beanstalk</a></p>
-</li>
-<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_connect" target="_blank" rel="external">Connect to a Container Instance</a></p>
-</li>
-<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_connect_inspect" target="_blank" rel="external">Inspect the Amazon ECS Container Agent</a></p>
-</li>
-</ul>
-<p>PS: you can login to the EC2 instance which host docker containers and  the WebAPP could be found on /var/app/current:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ec2-user@ip-10-0-0-117 ~]$ ls /var/app/current</span><br><span class="line">Dockerrun.aws.json  php-app  proxy</span><br></pre></td></tr></table></figure>
-<p>Until now, the webapp is running without the mysql connection</p>
-<h4 id="Second-step-link-to-RDS-Mysql"><a href="#Second-step-link-to-RDS-Mysql" class="headerlink" title="Second step, link to RDS Mysql"></a>Second step, link to RDS Mysql</h4><p><em>1. Think of security group, the instance  need access to RDS</em></p>
-<p><a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithSecurityGroups.html#USER_WorkingWithSecurityGroups.AuthorizingEC2" target="_blank" rel="external">http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithSecurityGroups.html#USER_WorkingWithSecurityGroups.AuthorizingEC2</a></p>
-<p>Login into EC2 instance and see whether can be able to visit RDS</p>
-<p>troubleshooting</p>
-<p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/java-rds.html#create_deploy_Java.rds.troubleshooting" target="_blank" rel="external">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/java-rds.html#create_deploy_Java.rds.troubleshooting</a></p>
-<p>More reference:</p>
-<p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_PHP.rds.html" target="_blank" rel="external">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_PHP.rds.html</a></p>
-<p><a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.RDS.html" target="_blank" rel="external">https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.RDS.html</a></p>
-<p><a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.RDS.html#rds-external-ec2classic" target="_blank" rel="external">https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.RDS.html#rds-external-ec2classic</a></p>
-<p>EC2 can access to mysql but still  </p>
-<p>i am getting lost, if it is not because security group. then i research many ,like these</p>
-<p><em>2. Connecting MYSQL RDS needs php-mysql inside docker</em></p>
-<p> I follow this to add one more database container         <a href="http://www.michaelgallego.fr/blog/2015/07/18/using-elastic-beanstalk-multi-container-with-php/" target="_blank" rel="external">http://www.michaelgallego.fr/blog/2015/07/18/using-elastic-beanstalk-multi-container-with-php/</a></p>
-<p><strong>       —-&gt;    I do not need, I can use the prebuild or private docker image (PHP with php-mysql)</strong></p>
-<p>Here is a way</p>
-<p><a href="http://www.michaelgallego.fr/blog/2015/07/18/using-elastic-beanstalk-multi-container-with-php/" target="_blank" rel="external">http://www.michaelgallego.fr/blog/2015/07/18/using-elastic-beanstalk-multi-container-with-php/</a></p>
-<p>我想直接使用 docker pull gvaartjes/php-fpm 在josn 文件中</p>
-<p>但是我发现不能直接使用 docker hub 中的image，会导致deploy失败  </p>
-<p>The key way is here,</p>
-<p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html#docker-images-private" target="_blank" rel="external">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html#docker-images-private</a></p>
-<p>Here is what I did,  </p>
-<p><a href="http://aws.amazon.com/ecr/getting-started/" target="_blank" rel="external">http://aws.amazon.com/ecr/getting-started/</a></p>
-<p>upload our own image to Amazon ECR to use</p>
-<p><img src="images/201607/image_6.png" alt="image alt text"></p>
-<p><a href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/get-set-up-for-amazon-ecr.html" target="_blank" rel="external">http://docs.aws.amazon.com/AmazonECR/latest/userguide/get-set-up-for-amazon-ecr.html</a></p>
-<p>需要用到 aws cli    见下文  于是安装aws cli  <a href="#heading=h.45kso27txzbd">  跳转 </a></p>
-<p>  533  cd Amazon\ AWS/</p>
-<p>  534  ls</p>
-<p>  535  curl “<a href="https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" target="_blank" rel="external">https://s3.amazonaws.com/aws-cli/awscli-bundle.zip</a>“ -o “awscli-bundle.zip”</p>
-<p>  536  unzip awscli-bundle.zip</p>
-<p>  537  ls</p>
-<p>  538   sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws</p>
-<p>  539  sudo pip install awscli</p>
-<p>  540  sudo pip install awscli –ignore-installed six</p>
-<p>  541  sudo pip install –upgrade awscli</p>
-<p>  542  aws help</p>
-<p>  543  aws ecr get-login –region us-east-1</p>
-<p>  544  aws configure</p>
-<p>  545  aws ecr get-login –region us-east-1</p>
-<p>  546  ls</p>
-<p>  547  docker login -u AWS -p CiBwm0YaISJeRtJm5n1G6uqeekXuoXXPe5UFce9Rq8/14xKaBgEBAgB4cJtGGiEiXkbSZuZ9RurqnnpF7qF1z3uVBXHvUavP9eMAAALxMIIC7QYJKoZIhvcNAQcGoIIC3jCCAtoCAQAwggLTBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDJkXIUCZlsdq7JcFsgIBEICCAqSduAvHW6bXm0e+/tY7olD9zC2Y0C+lIfm7x8+f/5Cp34l4wV21nG9SfwvT7T3YAip/dYaH5GG3HIjSO4rm4gy0fjpclAXm9Y1l3XrQ/5sGGo7MGMjE8RAvJkAHL+v7SDxCOEoUXjJMkHd71CzRrXSYe8nxkOcSqaKpm/xf5yKvaug0nskluE0CGUhn0Dotzj7B4m+PY7eS6nRpkdH3wPco2ypCmS1z2+4hBnVf9iCghADxtLs9rcEhqx/xiFwkVXxbljqkz/WNbMmBfHnIEo3xbJ8Z762LDq7a0bYJlJpjwjCUk5otwsd5HdUwvqZ77HyEYOMDObsKtbOc2ZN5AnoMYXIFZBq2BxG8Q3G72nhhn1LnQ0SMKGkeMmu9k7h7LbeZHcHtn3lfGZaFOuK/orHFTCjq1P1lLH8y4kw2XD0poIMOJ0IrgOmtUDfddCsKBCukd/F4aIrv7VhfM5+YkQjwzHjRAE2lhOCTp0arUah241Hk2KwqHSH7OiMeuY1aHUt5K7Un2MfcVRazmZieY0MmGSgfgP3ZKtvnHddwxAM/G9+vvNuSoM3A/cEKUxnbIsZCf/8s/VitDimRbPk9ELYhut64ryYje68hBxhYkF9PFftB19v6K+VSzDtnnWaDRM9s0VL3XCNjgbFVudE50AOBO0zD1xzMcipWqOO3qrX8+l4mBz4tBWdEN5rVcN3lm8XG/HhMxMIdoHn7Pxsd//3xPvIKkajEbuaqZ5RGA3mSpEpYK07+9OCooYc28g8LDRYHtdSqjklozyK0oFbGxhNLcWry5amBdavQIsBCR4QqHG/qBm3Q7yj+BktO6eoDcy1fHxQZT7PiXGCUw/fWCposv8KeQWbkhqZm1CJCVb5mwO7MmdxJXu/a5OjhLfbf/3r3Ifve -e none <a href="https://429834746942.dkr.ecr.us-east-1.amazonaws.com" target="_blank" rel="external">https://429834746942.dkr.ecr.us-east-1.amazonaws.com</a></p>
-<p>  566  docker build -t highcharts .</p>
-<p>  567  docker images</p>
-<p>  568  docker tag highcharts:latest 429834746942.dkr.ecr.us-east-1.amazonaws.com/highcharts:latest</p>
-<p>  569  docker push 429834746942.dkr.ecr.us-east-1.amazonaws.com/highcharts:latest</p>
-<h4 id="Configure-a-Container-Instance-IAM-Role"><a href="#Configure-a-Container-Instance-IAM-Role" class="headerlink" title="Configure a Container Instance IAM Role"></a><strong>Configure a Container Instance IAM Role</strong></h4><p>Instances in a multicontainer Docker environment must have an instance profile with permission to access Amazon EC2 Container Service (Amazon ECS), the service that Elastic Beanstalk uses to coordinate container deployments. To grant Amazon ECS access to the instances in your environment, you must create an IAM container instance policy and attach the policy to the correct IAM role.</p>
-<p><strong>Topics</strong></p>
-<ul>
-<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create-policy" target="_blank" rel="external">Create the Policy</a></p>
-</li>
-<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create-role" target="_blank" rel="external">Create the Role (if needed)</a></p>
-</li>
-<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#attach-policy" target="_blank" rel="external">Attach the Policy to the Role</a></p>
-</li>
-</ul>
-<p>instance 权限 关注 两个地方   一个 是 security group    </p>
-<p> 一个是   IAM  role   </p>
-<p><strong>让rds给instance  权限 从rds 的 security groups中去授权</strong></p>
-<p><strong>而instance访问 ecs 或者 ecr 在 IAM中设置 </strong></p>
-<p>给 <strong>aws-elasticbeanstalk-ec2-role</strong> 授予权限</p>
-
       
     </div>
     
@@ -388,6 +276,10 @@
       
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
