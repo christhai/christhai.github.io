@@ -4,17 +4,23 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>System Admin</title>
+  <title>Set up website on Elastic Beanstalk using Multi Container | System Admin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="System Admin">
-<meta property="og:url" content="https://christhai.github.io/index.html">
+  <meta name="description" content="# Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)This guide shows you how to setup WebApp  on Elastic Beanstalk using the [PHP-FPM]and [Nginx] Docker images.
+The procedure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Set up website on Elastic Beanstalk using Multi Container">
+<meta property="og:url" content="https://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/index.html">
 <meta property="og:site_name" content="System Admin">
-<meta property="og:description">
+<meta property="og:description" content="# Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)This guide shows you how to setup WebApp  on Elastic Beanstalk using the [PHP-FPM]and [Nginx] Docker images.
+The procedure">
+<meta property="og:image" content="https://christhai.github.io/images/201607/image_6.png">
+<meta property="og:updated_time" content="2016-07-04T19:32:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="System Admin">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Set up website on Elastic Beanstalk using Multi Container">
+<meta name="twitter:description" content="# Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)This guide shows you how to setup WebApp  on Elastic Beanstalk using the [PHP-FPM]and [Nginx] Docker images.
+The procedure">
+<meta name="twitter:image" content="https://christhai.github.io/images/201607/image_6.png">
   
     <link rel="alternative" href="/atom.xml" title="System Admin" type="application/atom+xml">
   
@@ -175,99 +181,7 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-Using-EB-CLI" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/04/Using-EB-CLI/" class="article-date">
-  	<time datetime="2016-07-04T19:19:34.000Z" itemprop="datePublished">2016-07-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/04/Using-EB-CLI/">Using EB CLI</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>during the deploy, I found it is good to use eb cli, then do not need to compress the zip and upload the application version. Another  bad thing is using this way cause to remove the instance and build again every time, take more time.</p>
-<p>Good to use eb cli ,just update the new change without build new instance.</p>
-<p>but in the beginning, i have much issue with using eb cli.</p>
-<p><img src="image_10.png" alt="image alt text"></p>
-<p>Then I create a new repo and do again</p>
-<p>checkout a new branch and git commit, then</p>
-<p>eb init</p>
-<p>790  git clone <a href="https://github.com/highcharts/www.highcharts.com.git" target="_blank" rel="external">https://github.com/highcharts/www.highcharts.com.git</a></p>
-<p> 791  ls</p>
-<p> 792  cd www.highcharts.com/</p>
-<p> 793  git branch</p>
-<p> 794  git checkout  eb_deploy</p>
-<p> 795  ls</p>
-<p> 796  ls</p>
-<p> 797  git branch</p>
-<p> 798  git add –all</p>
-<p> 799  git commit -m “change folder structure”</p>
-<p> 800  git push origin eb_deploy</p>
-<p> 801  ls</p>
-<p> 802  cat Dockerrun.aws.json</p>
-<p> 803  history</p>
-<p> 804  eb status</p>
-<p> 805  eb status haiwTest-env</p>
-<p> 806  eb deploy haiwTest-env</p>
-<p> 810  ls</p>
-<p> 811  git status</p>
-<p> 812  eb logs</p>
-<p> 814  eb logs haiwTest-env</p>
-<p> 816  eb use haiwTest-env</p>
-<p> 819  eb init        都失败了  直到重新init 了一下</p>
-<p> 820  eb deploy    才可以deploy</p>
-<p> 821  eb deploy</p>
-<p>eb deploy 的流程</p>
-<p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_PHP_cakePHP.html" target="_blank" rel="external">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_PHP_cakePHP.html</a></p>
-<h1 id="Using-Git-with-the-EB-CLI"><a href="#Using-Git-with-the-EB-CLI" class="headerlink" title="Using Git with the EB CLI"></a><strong>Using Git with the EB CLI</strong></h1><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cli-git.html" target="_blank" rel="external">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cli-git.html</a></p>
-<p><a href="http://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/eb-cli3-getting-started.html" target="_blank" rel="external">http://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/eb-cli3-getting-started.html</a></p>
-<h1 id="Configuring-the-AWS-Command-Line-Interface"><a href="#Configuring-the-AWS-Command-Line-Interface" class="headerlink" title="Configuring the AWS Command Line Interface"></a><strong>Configuring the AWS Command Line Interface</strong></h1><p><a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html" target="_blank" rel="external">http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html</a></p>
-<p><img src="image_11.png" alt="image alt text"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Set-up-website-on-Elastic-Beanstalk-using-Multi-Container" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Set-up-website-on-Elastic-Beanstalk-using-Multi-Container" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/" class="article-date">
@@ -283,12 +197,19 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/">Set up website on Elastic Beanstalk using Multi Container</a>
+    <h1 class="article-title" itemprop="name">
+      Set up website on Elastic Beanstalk using Multi Container
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -383,138 +304,49 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/04/Using-EB-CLI/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Using EB CLI
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Create a new php-fpm docker image on AWS ECR</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
-
-
-
-
-
-
-
-  
-    <article id="post-Create-a-new-php-fpm-docker-image-on-AWS-ECR" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/" class="article-date">
-  	<time datetime="2016-06-29T19:08:16.000Z" itemprop="datePublished">2016-06-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/">Create a new php-fpm docker image on AWS ECR</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Create-a-new-php-fpm-docker-image-on-AWS-ECR-Used-for-docker-muti-container-on-EB"><a href="#Create-a-new-php-fpm-docker-image-on-AWS-ECR-Used-for-docker-muti-container-on-EB" class="headerlink" title="Create a new php-fpm docker image on AWS ECR Used for docker muti-container on EB"></a>Create a new php-fpm docker image on AWS ECR Used for docker muti-container on EB</h2><p>  480  aws ecr get-login –region us-east-1<br>  481  docker login -u AWS -p<br>  482  docker images<br>  483  docker build -t christhai/php-app .<br>  491  docker tag christhai/php-app:latest 42xxxxxxxx2.dkr.ecr.us-east-1.amazonaws.com/christhai:php-app<br>  492  docker images<br>  493  docker push 42xxxxxxxx2.dkr.ecr.us-east-1.amazonaws.com/christhai:php-app</p>
-  <!-- ![](/images/favicon.png) -->
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Git-Skills" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/29/Git-Skills/" class="article-date">
-  	<time datetime="2016-06-29T18:19:56.000Z" itemprop="datePublished">2016-06-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/29/Git-Skills/">Git Skills</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="How-do-I-resolve-git-saying-“Commit-your-changes-or-stash-them-before-you-can-merge”"><a href="#How-do-I-resolve-git-saying-“Commit-your-changes-or-stash-them-before-you-can-merge”" class="headerlink" title="How do I resolve git saying “Commit your changes or stash them before you can merge”?"></a><a href="http://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-your-changes-or-stash-them-before-you-can-me">How do I resolve git saying “Commit your changes or stash them before you can merge”?</a></h1><p>you can’t merge with local modifications. Git protects you from losing potentially important changes. You have three options. One is to commit the change using</p>
-<p>git commit -m “My message”</p>
-<p>The second is to stash it. stashing acts as a stack, where you can push changes, and you pop them in reverse order.</p>
-<p>To stash type:</p>
-<p>git stash</p>
-<p>Do the merge, and than pull the stash:</p>
-<p>git stash pop</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/29/Git-Skills/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
@@ -523,66 +355,6 @@
 
 
 
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/27/hello-world/" class="article-date">
-  	<time datetime="2016-06-27T16:05:12.000Z" itemprop="datePublished">2016-06-27</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/27/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/27/hello-world/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -606,8 +378,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

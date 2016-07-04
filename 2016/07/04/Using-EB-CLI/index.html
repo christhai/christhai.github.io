@@ -4,18 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Create a new php-fpm docker image on AWS ECR | System Admin</title>
+  <title>Using EB CLI | System Admin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Create a new php-fpm docker image on AWS ECR Used for docker muti-container on EB  480  aws ecr get-login –region us-east-1  481  docker login -u AWS -p  482  docker images  483  docker build -t chris">
+  <meta name="description" content="during the deploy, I found it is good to use eb cli, then do not need to compress the zip and upload the application version. Another  bad thing is using this way cause to remove the instance and buil">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Create a new php-fpm docker image on AWS ECR">
-<meta property="og:url" content="https://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/index.html">
+<meta property="og:title" content="Using EB CLI">
+<meta property="og:url" content="https://christhai.github.io/2016/07/04/Using-EB-CLI/index.html">
 <meta property="og:site_name" content="System Admin">
-<meta property="og:description" content="Create a new php-fpm docker image on AWS ECR Used for docker muti-container on EB  480  aws ecr get-login –region us-east-1  481  docker login -u AWS -p  482  docker images  483  docker build -t chris">
-<meta property="og:updated_time" content="2016-07-04T18:21:28.000Z">
+<meta property="og:description" content="during the deploy, I found it is good to use eb cli, then do not need to compress the zip and upload the application version. Another  bad thing is using this way cause to remove the instance and buil">
+<meta property="og:image" content="https://christhai.github.io/image_10.png">
+<meta property="og:image" content="https://christhai.github.io/image_11.png">
+<meta property="og:updated_time" content="2016-07-04T19:19:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Create a new php-fpm docker image on AWS ECR">
-<meta name="twitter:description" content="Create a new php-fpm docker image on AWS ECR Used for docker muti-container on EB  480  aws ecr get-login –region us-east-1  481  docker login -u AWS -p  482  docker images  483  docker build -t chris">
+<meta name="twitter:title" content="Using EB CLI">
+<meta name="twitter:description" content="during the deploy, I found it is good to use eb cli, then do not need to compress the zip and upload the application version. Another  bad thing is using this way cause to remove the instance and buil">
+<meta name="twitter:image" content="https://christhai.github.io/image_10.png">
   
     <link rel="alternative" href="/atom.xml" title="System Admin" type="application/atom+xml">
   
@@ -176,11 +179,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Create-a-new-php-fpm-docker-image-on-AWS-ECR" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Using-EB-CLI" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/" class="article-date">
-  	<time datetime="2016-06-29T19:08:16.000Z" itemprop="datePublished">2016-06-29</time>
+      <a href="/2016/07/04/Using-EB-CLI/" class="article-date">
+  	<time datetime="2016-07-04T19:19:34.000Z" itemprop="datePublished">2016-07-04</time>
 </a>
     </div>
   
@@ -193,7 +196,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Create a new php-fpm docker image on AWS ECR
+      Using EB CLI
     </h1>
   
 
@@ -209,8 +212,44 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Create-a-new-php-fpm-docker-image-on-AWS-ECR-Used-for-docker-muti-container-on-EB"><a href="#Create-a-new-php-fpm-docker-image-on-AWS-ECR-Used-for-docker-muti-container-on-EB" class="headerlink" title="Create a new php-fpm docker image on AWS ECR Used for docker muti-container on EB"></a>Create a new php-fpm docker image on AWS ECR Used for docker muti-container on EB</h2><p>  480  aws ecr get-login –region us-east-1<br>  481  docker login -u AWS -p<br>  482  docker images<br>  483  docker build -t christhai/php-app .<br>  491  docker tag christhai/php-app:latest 42xxxxxxxx2.dkr.ecr.us-east-1.amazonaws.com/christhai:php-app<br>  492  docker images<br>  493  docker push 42xxxxxxxx2.dkr.ecr.us-east-1.amazonaws.com/christhai:php-app</p>
-  <!-- ![](/images/favicon.png) -->
+        <p>during the deploy, I found it is good to use eb cli, then do not need to compress the zip and upload the application version. Another  bad thing is using this way cause to remove the instance and build again every time, take more time.</p>
+<p>Good to use eb cli ,just update the new change without build new instance.</p>
+<p>but in the beginning, i have much issue with using eb cli.</p>
+<p><img src="image_10.png" alt="image alt text"></p>
+<p>Then I create a new repo and do again</p>
+<p>checkout a new branch and git commit, then</p>
+<p>eb init</p>
+<p>790  git clone <a href="https://github.com/highcharts/www.highcharts.com.git" target="_blank" rel="external">https://github.com/highcharts/www.highcharts.com.git</a></p>
+<p> 791  ls</p>
+<p> 792  cd www.highcharts.com/</p>
+<p> 793  git branch</p>
+<p> 794  git checkout  eb_deploy</p>
+<p> 795  ls</p>
+<p> 796  ls</p>
+<p> 797  git branch</p>
+<p> 798  git add –all</p>
+<p> 799  git commit -m “change folder structure”</p>
+<p> 800  git push origin eb_deploy</p>
+<p> 801  ls</p>
+<p> 802  cat Dockerrun.aws.json</p>
+<p> 803  history</p>
+<p> 804  eb status</p>
+<p> 805  eb status haiwTest-env</p>
+<p> 806  eb deploy haiwTest-env</p>
+<p> 810  ls</p>
+<p> 811  git status</p>
+<p> 812  eb logs</p>
+<p> 814  eb logs haiwTest-env</p>
+<p> 816  eb use haiwTest-env</p>
+<p> 819  eb init        都失败了  直到重新init 了一下</p>
+<p> 820  eb deploy    才可以deploy</p>
+<p> 821  eb deploy</p>
+<p>eb deploy 的流程</p>
+<p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_PHP_cakePHP.html" target="_blank" rel="external">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_PHP_cakePHP.html</a></p>
+<h1 id="Using-Git-with-the-EB-CLI"><a href="#Using-Git-with-the-EB-CLI" class="headerlink" title="Using Git with the EB CLI"></a><strong>Using Git with the EB CLI</strong></h1><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cli-git.html" target="_blank" rel="external">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cli-git.html</a></p>
+<p><a href="http://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/eb-cli3-getting-started.html" target="_blank" rel="external">http://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/eb-cli3-getting-started.html</a></p>
+<h1 id="Configuring-the-AWS-Command-Line-Interface"><a href="#Configuring-the-AWS-Command-Line-Interface" class="headerlink" title="Configuring the AWS Command Line Interface"></a><strong>Configuring the AWS Command Line Interface</strong></h1><p><a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html" target="_blank" rel="external">http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html</a></p>
+<p><img src="image_11.png" alt="image alt text"></p>
 
       
     </div>
@@ -220,18 +259,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Set up website on Elastic Beanstalk using Multi Container
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/06/29/Git-Skills/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Git Skills</div>
+    <a href="/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Set up website on Elastic Beanstalk using Multi Container</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
