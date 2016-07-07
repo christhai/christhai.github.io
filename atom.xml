@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>System Admin</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://christhai.github.io/"/>
+  <updated>2016-07-07T11:14:41.000Z</updated>
+  <id>https://christhai.github.io/</id>
+  
+  <author>
+    <name>Jonathan Wu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TEST DOCKER.CLOUD(TUTUM) CD AUTO TOOL</title>
+    <link href="https://christhai.github.io/2016/07/07/TEST-DOCKER-CLOUD-TUTUM-CD-AUTO-TOOL/"/>
+    <id>https://christhai.github.io/2016/07/07/TEST-DOCKER-CLOUD-TUTUM-CD-AUTO-TOOL/</id>
+    <published>2016-07-07T08:44:29.000Z</published>
+    <updated>2016-07-07T11:14:41.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;Step-one-link-to-AMAZON-EC2&quot;&gt;&lt;a href=&quot;#Step-one-link-to-AMAZON-EC2&quot; class=&quot;headerlink&quot; title=&quot;Step one, link to AMAZON EC2&quot;&gt;&lt;/a&gt;Step one, link to AMAZON EC2&lt;/h3&gt;&lt;p&gt;Go to “cloud setting”, - “cloud providers”&lt;/p&gt;
+&lt;p&gt;Create a IAM user “docker” and attach policy  “access to EC2”&lt;/p&gt;
+&lt;h3 id=&quot;Step-two-create-a-Node-clusters-and-nodes&quot;&gt;&lt;a href=&quot;#Step-two-create-a-Node-clusters-and-nodes&quot; class=&quot;headerlink&quot; title=&quot;Step two, create a Node clusters and nodes&quot;&gt;&lt;/a&gt;Step two, create a Node clusters and nodes&lt;/h3&gt;&lt;h3 id=&quot;Step-three-build-services-from-Repository&quot;&gt;&lt;a href=&quot;#Step-three-build-services-from-Repository&quot; class=&quot;headerlink&quot; title=&quot;Step three, build services from Repository&quot;&gt;&lt;/a&gt;Step three, build services from Repository&lt;/h3&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;Set-trigger&quot;&gt;&lt;a href=&quot;#Set-trigger&quot; class=&quot;headerlink&quot; title=&quot;Set trigger&quot;&gt;&lt;/a&gt;Set trigger&lt;/h3&gt;&lt;h3 id=&quot;Finally-browser-endpoints-see-webApp&quot;&gt;&lt;a href=&quot;#Finally-browser-endpoints-see-webApp&quot; class=&quot;headerlink&quot; title=&quot;Finally, browser endpoints see  webApp&quot;&gt;&lt;/a&gt;Finally, browser endpoints see  webApp&lt;/h3&gt;&lt;p&gt;总结：&lt;/p&gt;
+&lt;p&gt;和dockerhub捆绑挺好的，给单个容器比较好用  例如export server&lt;br&gt;但是不知道能不能push到 EB上，或者用stack功能  类似docker compose&lt;br&gt;因为ec2只是单个instance,没有其他组件Load balance 之类的  &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Step-one-link-to-AMAZON-EC2&quot;&gt;&lt;a href=&quot;#Step-one-link-to-AMAZON-EC2&quot; class=&quot;headerlink&quot; title=&quot;Step one, link to AMAZON EC2&quot;&gt;&lt;/a&gt;Step one, link to AMAZON EC2&lt;/h3&gt;&lt;p&gt;Go to “cloud setting”, - “cloud providers”&lt;/p&gt;
+&lt;p&gt;Create a IAM user “docker” and attach policy  “access to EC2”&lt;/p&gt;
+&lt;h3 id=&quot;Step-two-create-a-Node-clusters-and-nodes&quot;&gt;&lt;a href=&quot;#Step-two-create-a-Node-clusters-and-nodes&quot; class=&quot;headerlink&quot; title=&quot;Step two, create a Node clusters and nodes&quot;&gt;&lt;/a&gt;Step two, create a Node clusters and nodes&lt;/h3&gt;&lt;h3 id=&quot;Step-three-build-services-from-Repository&quot;&gt;&lt;a href=&quot;#Step-three-build-services-from-Repository&quot; class=&quot;headerlink&quot; title=&quot;Step three, build services from Repository&quot;&gt;&lt;/a&gt;Step three, build services from Repository&lt;/h3&gt;
+    
+    </summary>
+    
+    
+      <category term="DOCKER AMAZON" scheme="https://christhai.github.io/tags/DOCKER-AMAZON/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Using EB CLI</title>
+    <link href="https://christhai.github.io/2016/07/04/Using-EB-CLI/"/>
+    <id>https://christhai.github.io/2016/07/04/Using-EB-CLI/</id>
+    <published>2016-07-04T19:19:34.000Z</published>
+    <updated>2016-07-04T19:34:57.000Z</updated>
+    
+    <content type="html">&lt;p&gt;during the deploy, I found it is good to use eb cli, then do not need to compress the zip and upload the application version. Another  bad thing is using this way cause to remove the instance and build again every time, take more time.&lt;/p&gt;
+&lt;p&gt;Good to use eb cli ,just update the new change without build new instance.&lt;/p&gt;
+&lt;p&gt;but in the beginning, i have much issue with using eb cli.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;Then I create a new repo and do again&lt;/p&gt;
+&lt;p&gt;checkout a new branch and git commit, then&lt;/p&gt;
+&lt;p&gt;eb init&lt;/p&gt;
+&lt;p&gt;790  git clone &lt;a href=&quot;https://github.com/highcharts/www.highcharts.com.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/highcharts/www.highcharts.com.git&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt; 791  ls&lt;/p&gt;
+&lt;p&gt; 792  cd www.highcharts.com/&lt;/p&gt;
+&lt;p&gt; 793  git branch&lt;/p&gt;
+&lt;p&gt; 794  git checkout  eb_deploy&lt;/p&gt;
+&lt;p&gt; 795  ls&lt;/p&gt;
+&lt;p&gt; 796  ls&lt;/p&gt;
+&lt;p&gt; 797  git branch&lt;/p&gt;
+&lt;p&gt; 798  git add –all&lt;/p&gt;
+&lt;p&gt; 799  git commit -m “change folder structure”&lt;/p&gt;
+&lt;p&gt; 800  git push origin eb_deploy&lt;/p&gt;
+&lt;p&gt; 801  ls&lt;/p&gt;
+&lt;p&gt; 802  cat Dockerrun.aws.json&lt;/p&gt;
+&lt;p&gt; 803  history&lt;/p&gt;
+&lt;p&gt; 804  eb status&lt;/p&gt;
+&lt;p&gt; 805  eb status haiwTest-env&lt;/p&gt;
+&lt;p&gt; 806  eb deploy haiwTest-env&lt;/p&gt;
+&lt;p&gt; 810  ls&lt;/p&gt;
+&lt;p&gt; 811  git status&lt;/p&gt;
+&lt;p&gt; 812  eb logs&lt;/p&gt;
+&lt;p&gt; 814  eb logs haiwTest-env&lt;/p&gt;
+&lt;p&gt; 816  eb use haiwTest-env&lt;/p&gt;
+&lt;p&gt; 819  eb init        都失败了  直到重新init 了一下&lt;/p&gt;
+&lt;p&gt; 820  eb deploy    才可以deploy&lt;/p&gt;
+&lt;p&gt; 821  eb deploy&lt;/p&gt;
+&lt;p&gt;eb deploy 的流程&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_PHP_cakePHP.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_PHP_cakePHP.html&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Using-Git-with-the-EB-CLI&quot;&gt;&lt;a href=&quot;#Using-Git-with-the-EB-CLI&quot; class=&quot;headerlink&quot; title=&quot;Using Git with the EB CLI&quot;&gt;&lt;/a&gt;&lt;strong&gt;Using Git with the EB CLI&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cli-git.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cli-git.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/eb-cli3-getting-started.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://docs.aws.amazon.com/zh_cn/elasticbeanstalk/latest/dg/eb-cli3-getting-started.html&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Configuring-the-AWS-Command-Line-Interface&quot;&gt;&lt;a href=&quot;#Configuring-the-AWS-Command-Line-Interface&quot; class=&quot;headerlink&quot; title=&quot;Configuring the AWS Command Line Interface&quot;&gt;&lt;/a&gt;&lt;strong&gt;Configuring the AWS Command Line Interface&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;during the deploy, I found it is good to use eb cli, then do not need to compress the zip and upload the application version. Another  bad thing is using this way cause to remove the instance and build again every time, take more time.&lt;/p&gt;
+&lt;p&gt;Good to use eb cli ,just update the new change without build new instance.&lt;/p&gt;
+&lt;p&gt;but in the beginning, i have much issue with using eb cli.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Set up website on Elastic Beanstalk using Multi Container</title>
+    <link href="https://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/"/>
+    <id>https://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/</id>
+    <published>2016-07-04T19:00:49.000Z</published>
+    <updated>2016-07-04T20:03:23.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Set-up-website-on-Elastic-Beanstalk-using-Multi-Container-PHP-FPM-Nginx&quot;&gt;&lt;a href=&quot;#Set-up-website-on-Elastic-Beanstalk-using-Multi-Container-PHP-FPM-Nginx&quot; class=&quot;headerlink&quot; title=&quot;Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)&quot;&gt;&lt;/a&gt;Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)&lt;/h2&gt;&lt;p&gt;This guide shows you how to setup WebApp  on Elastic Beanstalk using the [PHP-FPM]and [Nginx] Docker images.&lt;/p&gt;
+&lt;h2 id=&quot;The-procedure-of-making-this-work&quot;&gt;&lt;a href=&quot;#The-procedure-of-making-this-work&quot; class=&quot;headerlink&quot; title=&quot;The procedure of making this work&quot;&gt;&lt;/a&gt;The procedure of making this work&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;#heading=h.rilr6oluuna3&quot;&gt;First step, covert docker compose file to Dockerrun.aws.json&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#heading=h.txmc5fcrcsi1&quot;&gt;Second step, link to RDS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;—-&amp;gt;   Think of security group, the instance  need access to RDS&lt;/p&gt;
+&lt;p&gt;—-&amp;gt;   Connecting MYSQL RDS needs php-mysql inside docker&lt;/p&gt;
+&lt;p&gt;—-&amp;gt;   Upload prebuild or private docker image (PHP with php-mysql) to ECR&lt;/p&gt;
+&lt;hr&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;First-step-covert-docker-compose-file-to-Dockerrun-aws-json&quot;&gt;&lt;a href=&quot;#First-step-covert-docker-compose-file-to-Dockerrun-aws-json&quot; class=&quot;headerlink&quot; title=&quot;First step, covert docker compose file to Dockerrun.aws.json&quot;&gt;&lt;/a&gt;First step, covert docker compose file to Dockerrun.aws.json&lt;/h3&gt;&lt;p&gt;Follow this tutorial  &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Topics&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_role&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Configure a Container Instance IAM Role&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_config&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Define Docker Containers&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_code&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Add Content&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_deploy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deploy to Elastic Beanstalk&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_connect&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Connect to a Container Instance&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_connect_inspect&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Inspect the Amazon ECS Container Agent&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;PS: you can login to the EC2 instance which host docker containers and  the WebAPP could be found on /var/app/current:&lt;/p&gt;
+&lt;figure class=&quot;highlight stata&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[ec2-user@ip-10-0-0-117 ~]$ &lt;span class=&quot;keyword&quot;&gt;ls&lt;/span&gt; /&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt;/&lt;span class=&quot;keyword&quot;&gt;app&lt;/span&gt;/current&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Dockerrun.aws.json  php-&lt;span class=&quot;keyword&quot;&gt;app&lt;/span&gt;  proxy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Until now, the webapp is running without the mysql connection&lt;/p&gt;
+&lt;h3 id=&quot;Second-step-link-to-RDS-Mysql&quot;&gt;&lt;a href=&quot;#Second-step-link-to-RDS-Mysql&quot; class=&quot;headerlink&quot; title=&quot;Second step, link to RDS Mysql&quot;&gt;&lt;/a&gt;Second step, link to RDS Mysql&lt;/h3&gt;&lt;h4 id=&quot;1-Think-of-security-group-the-instance-need-access-to-RDS&quot;&gt;&lt;a href=&quot;#1-Think-of-security-group-the-instance-need-access-to-RDS&quot; class=&quot;headerlink&quot; title=&quot;1. Think of security group, the instance  need access to RDS&quot;&gt;&lt;/a&gt;1. Think of security group, the instance  need access to RDS&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithSecurityGroups.html#USER_WorkingWithSecurityGroups.AuthorizingEC2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithSecurityGroups.html#USER_WorkingWithSecurityGroups.AuthorizingEC2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Login into EC2 instance and see whether can be able to visit RDS&lt;/p&gt;
+&lt;p&gt;troubleshooting&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/java-rds.html#create_deploy_Java.rds.troubleshooting&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/java-rds.html#create_deploy_Java.rds.troubleshooting&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;More reference:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_PHP.rds.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_PHP.rds.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.RDS.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.RDS.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.RDS.html#rds-external-ec2classic&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.RDS.html#rds-external-ec2classic&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;So far, EC2 instance can access to RDS mysql however Webapp still not work.&lt;/p&gt;
+&lt;p&gt;We need mysql client to connect BY USING php-mysql&lt;/p&gt;
+&lt;h4 id=&quot;2-Connecting-MYSQL-RDS-needs-php-mysql-inside-docker&quot;&gt;&lt;a href=&quot;#2-Connecting-MYSQL-RDS-needs-php-mysql-inside-docker&quot; class=&quot;headerlink&quot; title=&quot;2. Connecting MYSQL RDS needs php-mysql inside docker&quot;&gt;&lt;/a&gt;2. Connecting MYSQL RDS needs php-mysql inside docker&lt;/h4&gt;&lt;p&gt;Firstly, I add one more database container and test. It was not working.&lt;br&gt;Then I realized I do not need a separate DB container actually. The thing I need is the prebuild or private docker image (PHP with php-mysql)**&lt;/p&gt;
+&lt;p&gt;Here is a good doc i followed that solved this:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.michaelgallego.fr/blog/2015/07/18/using-elastic-beanstalk-multi-container-with-php/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.michaelgallego.fr/blog/2015/07/18/using-elastic-beanstalk-multi-container-with-php/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I wanna use docker private images (haiw/php-fpm) in Dockerrun.aws.json, but after testing, I found that it is not allowed and it cause deploy issue.  &lt;/p&gt;
+&lt;p&gt;Need to figure out a alternative way.&lt;/p&gt;
+&lt;h4 id=&quot;3-Upload-prebuild-or-private-docker-image-PHP-with-php-mysql-to-ECR&quot;&gt;&lt;a href=&quot;#3-Upload-prebuild-or-private-docker-image-PHP-with-php-mysql-to-ECR&quot; class=&quot;headerlink&quot; title=&quot;3. Upload prebuild or private docker image (PHP with php-mysql) to ECR&quot;&gt;&lt;/a&gt;3. Upload prebuild or private docker image (PHP with php-mysql) to ECR&lt;/h4&gt;&lt;p&gt;Toturial:&lt;br&gt;&lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html#docker-images-private&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html#docker-images-private&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Here is what I did,  &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://aws.amazon.com/ecr/getting-started/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://aws.amazon.com/ecr/getting-started/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;upload docker image to Amazon ECR to use&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;images/201607/image_6.png&quot; alt=&quot;image alt text&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/AmazonECR/latest/userguide/get-set-up-for-amazon-ecr.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://docs.aws.amazon.com/AmazonECR/latest/userguide/get-set-up-for-amazon-ecr.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Commands review:&lt;/p&gt;
+&lt;figure class=&quot;highlight basic&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;543 &lt;/span&gt; aws ecr &lt;span class=&quot;keyword&quot;&gt;get&lt;/span&gt;-login --region us-east-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;544 &lt;/span&gt; aws configure&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;545 &lt;/span&gt; aws ecr &lt;span class=&quot;keyword&quot;&gt;get&lt;/span&gt;-login --region us-east-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;546 &lt;/span&gt; ls&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;547 &lt;/span&gt; docker login -u AWS -p CiBwm0YaISJ&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;566 &lt;/span&gt; docker build -t haiw/php-fpm:latest .&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;567 &lt;/span&gt; docker images&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;568 &lt;/span&gt; docker tag  haiw/php-fpm:latest &lt;span class=&quot;number&quot;&gt;429834746942.d&lt;/span&gt;kr.ecr.us-east-&lt;span class=&quot;number&quot;&gt;1.&lt;/span&gt;amazonaws.&lt;span class=&quot;keyword&quot;&gt;com&lt;/span&gt;/php-fpm:latest&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;569 &lt;/span&gt; docker push &lt;span class=&quot;number&quot;&gt;429834746942.d&lt;/span&gt;kr.ecr.us-east-&lt;span class=&quot;number&quot;&gt;1.&lt;/span&gt;amazonaws.&lt;span class=&quot;keyword&quot;&gt;com&lt;/span&gt;/php-fpm:latest&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;EB APP use docker image from ECR, it also requires permission&lt;/p&gt;
+&lt;h4 id=&quot;4-Configure-Container-Instance-IAM-Role&quot;&gt;&lt;a href=&quot;#4-Configure-Container-Instance-IAM-Role&quot; class=&quot;headerlink&quot; title=&quot;4.Configure Container Instance IAM Role&quot;&gt;&lt;/a&gt;4.Configure Container Instance IAM Role&lt;/h4&gt;&lt;p&gt;Instances in a multicontainer Docker environment must have an instance profile with permission to access Amazon EC2 Container Service (Amazon ECS), the service that Elastic Beanstalk uses to coordinate container deployments. To grant Amazon ECS access to the instances in your environment, you must create an IAM container instance policy and attach the policy to the correct IAM role.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Topics&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create-policy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Create the Policy&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create-role&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Create the Role (if needed)&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#attach-policy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Attach the Policy to the Role&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Conclude:&lt;br&gt;EC2 instance needs security group   and   IAM  role   &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;让rds给instance  权限 从rds 的 security groups中去授权&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;而instance访问 ecs 或者 ecr 在 IAM中设置 &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;给 &lt;strong&gt;aws-elasticbeanstalk-ec2-role&lt;/strong&gt; 授予权限&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Set-up-website-on-Elastic-Beanstalk-using-Multi-Container-PHP-FPM-Nginx&quot;&gt;&lt;a href=&quot;#Set-up-website-on-Elastic-Beanstalk-using-Multi-Container-PHP-FPM-Nginx&quot; class=&quot;headerlink&quot; title=&quot;Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)&quot;&gt;&lt;/a&gt;Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)&lt;/h2&gt;&lt;p&gt;This guide shows you how to setup WebApp  on Elastic Beanstalk using the [PHP-FPM]and [Nginx] Docker images.&lt;/p&gt;
+&lt;h2 id=&quot;The-procedure-of-making-this-work&quot;&gt;&lt;a href=&quot;#The-procedure-of-making-this-work&quot; class=&quot;headerlink&quot; title=&quot;The procedure of making this work&quot;&gt;&lt;/a&gt;The procedure of making this work&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;#heading=h.rilr6oluuna3&quot;&gt;First step, covert docker compose file to Dockerrun.aws.json&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;#heading=h.txmc5fcrcsi1&quot;&gt;Second step, link to RDS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;—-&amp;gt;   Think of security group, the instance  need access to RDS&lt;/p&gt;
+&lt;p&gt;—-&amp;gt;   Connecting MYSQL RDS needs php-mysql inside docker&lt;/p&gt;
+&lt;p&gt;—-&amp;gt;   Upload prebuild or private docker image (PHP with php-mysql) to ECR&lt;/p&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Create a new php-fpm docker image on AWS ECR</title>
+    <link href="https://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/"/>
+    <id>https://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/</id>
+    <published>2016-06-29T19:08:16.000Z</published>
+    <updated>2016-07-04T18:21:28.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Create-a-new-php-fpm-docker-image-on-AWS-ECR-Used-for-docker-muti-container-on-EB&quot;&gt;&lt;a href=&quot;#Create-a-new-php-fpm-docker-image-on-AWS-ECR-Used-for-docker-muti-container-on-EB&quot; class=&quot;headerlink&quot; title=&quot;Create a new php-fpm docker image on AWS ECR Used for docker muti-container on EB&quot;&gt;&lt;/a&gt;Create a new php-fpm docker image on AWS ECR Used for docker muti-container on EB&lt;/h2&gt;&lt;p&gt;  480  aws ecr get-login –region us-east-1&lt;br&gt;  481  docker login -u AWS -p&lt;br&gt;  482  docker images&lt;br&gt;  483  docker build -t christhai/php-app .&lt;br&gt;  491  docker tag christhai/php-app:latest 42xxxxxxxx2.dkr.ecr.us-east-1.amazonaws.com/christhai:php-app&lt;br&gt;  492  docker images&lt;br&gt;  493  docker push 42xxxxxxxx2.dkr.ecr.us-east-1.amazonaws.com/christhai:php-app&lt;/p&gt;
+  &lt;!-- ![](/images/favicon.png) --&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Create-a-new-php-fpm-docker-image-on-AWS-ECR-Used-for-docker-muti-container-on-EB&quot;&gt;&lt;a href=&quot;#Create-a-new-php-fpm-docker-image-on-AW
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Git Skills</title>
+    <link href="https://christhai.github.io/2016/06/29/Git-Skills/"/>
+    <id>https://christhai.github.io/2016/06/29/Git-Skills/</id>
+    <published>2016-06-29T18:19:56.000Z</published>
+    <updated>2016-06-29T18:42:26.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;How-do-I-resolve-git-saying-“Commit-your-changes-or-stash-them-before-you-can-merge”&quot;&gt;&lt;a href=&quot;#How-do-I-resolve-git-saying-“Commit-your-changes-or-stash-them-before-you-can-merge”&quot; class=&quot;headerlink&quot; title=&quot;How do I resolve git saying “Commit your changes or stash them before you can merge”?&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-your-changes-or-stash-them-before-you-can-me&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;How do I resolve git saying “Commit your changes or stash them before you can merge”?&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;you can’t merge with local modifications. Git protects you from losing potentially important changes. You have three options. One is to commit the change using&lt;/p&gt;
+&lt;p&gt;git commit -m “My message”&lt;/p&gt;
+&lt;p&gt;The second is to stash it. stashing acts as a stack, where you can push changes, and you pop them in reverse order.&lt;/p&gt;
+&lt;p&gt;To stash type:&lt;/p&gt;
+&lt;p&gt;git stash&lt;/p&gt;
+&lt;p&gt;Do the merge, and than pull the stash:&lt;/p&gt;
+&lt;p&gt;git stash pop&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;The third options is to discard the local changes using git reset –hard&lt;/p&gt;
+&lt;h1 id=&quot;How-to-view-file-diff-in-git-before-commit&quot;&gt;&lt;a href=&quot;#How-to-view-file-diff-in-git-before-commit&quot; class=&quot;headerlink&quot; title=&quot;How to view file diff in git before commit&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://stackoverflow.com/questions/10039747/how-to-view-file-diff-in-git-before-commit&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;How to view file diff in git before commit&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;If you want to see what you haven’t git added yet:&lt;/p&gt;
+&lt;p&gt;git diff – myfile.txt&lt;/p&gt;
+&lt;p&gt;or if you want to see already-added changes&lt;/p&gt;
+&lt;p&gt;git diff –cached – myfile.txt&lt;/p&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;p&gt;git diff HEAD file&lt;/p&gt;
+&lt;p&gt;will show you changes you added to your worktree from the last commit. All the changes (staged or not staged) will be shown.&lt;/p&gt;
+&lt;h1 id=&quot;Showing-which-files-have-changed-between-two-revisions&quot;&gt;&lt;a href=&quot;#Showing-which-files-have-changed-between-two-revisions&quot; class=&quot;headerlink&quot; title=&quot;Showing which files have changed between two revisions&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://stackoverflow.com/questions/822811/showing-which-files-have-changed-between-two-revisions&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Showing which files have changed between two revisions&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Try&lt;/p&gt;
+&lt;p&gt;$ git diff –name-status master..branchName&lt;/p&gt;
+&lt;h1 id=&quot;How-can-I-compare-files-from-two-different-branches&quot;&gt;&lt;a href=&quot;#How-can-I-compare-files-from-two-different-branches&quot; class=&quot;headerlink&quot; title=&quot;How can I compare files from two different branches?&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://stackoverflow.com/questions/4099742/how-can-i-compare-files-from-two-different-branches&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;How can I compare files from two different branches?&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;git diff can show you the difference between two commits:&lt;/p&gt;
+&lt;p&gt;git diff mybranch master – myfile.cs&lt;/p&gt;
+&lt;h1 id=&quot;Differences-for-a-certain-folder-between-remote-git-branches&quot;&gt;&lt;a href=&quot;#Differences-for-a-certain-folder-between-remote-git-branches&quot; class=&quot;headerlink&quot; title=&quot;Differences for a certain folder between remote git branches&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://stackoverflow.com/questions/12123633/differences-for-a-certain-folder-between-git-branches&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Differences for a certain folder between remote git branches&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;git diff master..origin/yourbranch path/to/folder&lt;/p&gt;
+&lt;h1 id=&quot;How-do-you-merge-selective-files-with-git-merge&quot;&gt;&lt;a href=&quot;#How-do-you-merge-selective-files-with-git-merge&quot; class=&quot;headerlink&quot; title=&quot;How do you merge selective files with git-merge?&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://stackoverflow.com/questions/449541/how-do-you-merge-selective-files-with-git-merge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;How do you merge selective files with git-merge?&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/449541/how-do-you-merge-selective-files-with-git-merge&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/449541/how-do-you-merge-selective-files-with-git-merge&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;use git add –patch or possibly git add –interactive which allows you to add just parts of a hun&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.haykranen.nl/2011/07/18/git-merging-specific-files-from-another-branch/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.haykranen.nl/2011/07/18/git-merging-specific-files-from-another-branch/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Git-Delete-a-branch-local-or-remote&quot;&gt;&lt;a href=&quot;#Git-Delete-a-branch-local-or-remote&quot; class=&quot;headerlink&quot; title=&quot;Git: Delete a branch (local or remote)&quot;&gt;&lt;/a&gt;&lt;strong&gt;Git: Delete a branch (local or remote)&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;To delete a local branch&lt;/p&gt;
+&lt;p&gt;git branch -d the_local_branch&lt;/p&gt;
+&lt;p&gt;To remove a remote branch (if you know what you are doing!)&lt;/p&gt;
+&lt;p&gt;git push origin :the_remote_branch&lt;/p&gt;
+&lt;h1 id=&quot;Git-HowTo-revert-a-commit-already-pushed-to-a-remote-repository&quot;&gt;&lt;a href=&quot;#Git-HowTo-revert-a-commit-already-pushed-to-a-remote-repository&quot; class=&quot;headerlink&quot; title=&quot;Git HowTo: revert a commit already pushed to a remote repository&quot;&gt;&lt;/a&gt;&lt;strong&gt;Git HowTo: revert a commit already pushed to a remote repository&lt;/strong&gt;&lt;/h1&gt;&lt;h2 id=&quot;Case-1-Delete-the-last-commit&quot;&gt;&lt;a href=&quot;#Case-1-Delete-the-last-commit&quot; class=&quot;headerlink&quot; title=&quot;Case 1: Delete the last commit&quot;&gt;&lt;/a&gt;&lt;strong&gt;Case 1: Delete the last commit&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;Deleting the last commit is the easiest case. Let’s say we have a remote &lt;em&gt;mathnet&lt;/em&gt;with branch &lt;em&gt;master&lt;/em&gt; that currently points to commit &lt;em&gt;dd61ab32&lt;/em&gt;. We want to remove the top commit. Translated to git terminology, we want to force the &lt;em&gt;master&lt;/em&gt; branch of the &lt;em&gt;mathnet&lt;/em&gt; remote repository to the parent of &lt;em&gt;dd61ab32&lt;/em&gt;:&lt;/p&gt;
+&lt;table&gt;&lt;br&gt;  &lt;tr&gt;&lt;br&gt;    &lt;td&gt;1:&lt;br&gt;&lt;/td&gt;&lt;br&gt;    &lt;td&gt;$ git push mathnet +dd61ab32^:master&lt;br&gt;&lt;/td&gt;&lt;br&gt;  &lt;/tr&gt;&lt;br&gt;&lt;/table&gt;
+
+
+&lt;p&gt;Where git interprets x^ as the parent of x and + as a forced non-fastforward push. If you have the master branch checked out locally, you can also do it in two simpler steps: First reset the branch to the parent of the current commit, then force-push it to the remote.&lt;/p&gt;
+&lt;table&gt;&lt;br&gt;  &lt;tr&gt;&lt;br&gt;    &lt;td&gt;1:&lt;br&gt;2:&lt;br&gt;&lt;/td&gt;&lt;br&gt;    &lt;td&gt;$ git reset HEAD^ –hard&lt;br&gt;$ git push mathnet -f&lt;/td&gt;&lt;br&gt;  &lt;/tr&gt;&lt;br&gt;&lt;/table&gt;
+
+
+&lt;h3 id=&quot;Undo-a-commit-and-redo&quot;&gt;&lt;a href=&quot;#Undo-a-commit-and-redo&quot; class=&quot;headerlink&quot; title=&quot;Undo a commit and redo&quot;&gt;&lt;/a&gt;&lt;strong&gt;Undo a commit and redo&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;$ git commit -m “Something terribly misguided” (1)&lt;/p&gt;
+&lt;p&gt;$ git reset –soft HEAD~ (2)&lt;/p&gt;
+&lt;h1 id=&quot;git-ahead-behind-info-between-master-and-branch&quot;&gt;&lt;a href=&quot;#git-ahead-behind-info-between-master-and-branch&quot; class=&quot;headerlink&quot; title=&quot;git ahead/behind info between master and branch?&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://stackoverflow.com/questions/20433867/git-ahead-behind-info-between-master-and-branch&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;git ahead/behind info between master and branch?&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;First of all to see how many revisions you are behind locally, you should do a git fetch to make sure you have the latest info from your remote.&lt;/p&gt;
+&lt;p&gt;The default output of git status tells you how many revisions you are ahead or behind, but usually I find this too verbose:&lt;/p&gt;
+&lt;p&gt;$ git status # On branch master # Your branch and ‘origin/master’ have diverged, # and have 2 and 1 different commit each, respectively. # nothing to commit (working directory clean)&lt;/p&gt;
+&lt;p&gt;I prefer git status -sb:&lt;/p&gt;
+&lt;p&gt;$ git status -sb ## master…origin/master [ahead 2, behind 1]&lt;/p&gt;
+&lt;p&gt;In fact I alias this to simply git s, and this is the main command I use for checking status.&lt;/p&gt;
+&lt;p&gt;To see the diff in the “ahead revisions” of master, I can exclude the “behind revisions” from origin/master:&lt;/p&gt;
+&lt;p&gt;git diff master..origin/master^&lt;/p&gt;
+&lt;p&gt;To see the diff in the “behind revisions” of origin/master, I can exclude the “ahead revisions” from master:&lt;/p&gt;
+&lt;p&gt;git diff origin/master..master^^&lt;/p&gt;
+&lt;p&gt;If there are 5 revisions ahead or behind it might be easier to write like this:&lt;/p&gt;
+&lt;p&gt;git diff master..origin/master~5 git diff origin/master..master~5&lt;/p&gt;
+&lt;h1 id=&quot;Git-Branching-Basic-Branching-and-Merging&quot;&gt;&lt;a href=&quot;#Git-Branching-Basic-Branching-and-Merging&quot; class=&quot;headerlink&quot; title=&quot;Git Branching - Basic Branching and Merging&quot;&gt;&lt;/a&gt;Git Branching - Basic Branching and Merging&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Get-changes-from-master-into-branch-in-git&quot;&gt;&lt;a href=&quot;#Get-changes-from-master-into-branch-in-git&quot; class=&quot;headerlink&quot; title=&quot;Get changes from master into branch in git&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://stackoverflow.com/questions/5340724/get-changes-from-master-into-branch-in-git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Get changes from master into branch in git&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Checkout the aq branch, then rebase from master.&lt;/p&gt;
+&lt;p&gt;git checkout aq&lt;/p&gt;
+&lt;p&gt;git rebase master&lt;/p&gt;
+&lt;h1 id=&quot;Git-Branching-Rebasing&quot;&gt;&lt;a href=&quot;#Git-Branching-Rebasing&quot; class=&quot;headerlink&quot; title=&quot;Git Branching - Rebasing&quot;&gt;&lt;/a&gt;Git Branching - Rebasing&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://git-scm.com/book/en/v2/Git-Branching-Rebasing&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://git-scm.com/book/en/v2/Git-Branching-Rebasing&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;How-do-I-resolve-git-saying-“Commit-your-changes-or-stash-them-before-you-can-merge”&quot;&gt;&lt;a href=&quot;#How-do-I-resolve-git-saying-“Commit-your-changes-or-stash-them-before-you-can-merge”&quot; class=&quot;headerlink&quot; title=&quot;How do I resolve git saying “Commit your changes or stash them before you can merge”?&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-your-changes-or-stash-them-before-you-can-me&quot;&gt;How do I resolve git saying “Commit your changes or stash them before you can merge”?&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;you can’t merge with local modifications. Git protects you from losing potentially important changes. You have three options. One is to commit the change using&lt;/p&gt;
+&lt;p&gt;git commit -m “My message”&lt;/p&gt;
+&lt;p&gt;The second is to stash it. stashing acts as a stack, where you can push changes, and you pop them in reverse order.&lt;/p&gt;
+&lt;p&gt;To stash type:&lt;/p&gt;
+&lt;p&gt;git stash&lt;/p&gt;
+&lt;p&gt;Do the merge, and than pull the stash:&lt;/p&gt;
+&lt;p&gt;git stash pop&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Git" scheme="https://christhai.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://christhai.github.io/2016/06/27/hello-world/"/>
+    <id>https://christhai.github.io/2016/06/27/hello-world/</id>
+    <published>2016-06-27T16:05:12.000Z</published>
+    <updated>2016-06-29T18:43:00.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
