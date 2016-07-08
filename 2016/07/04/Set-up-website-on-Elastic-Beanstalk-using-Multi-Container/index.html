@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Set up website on Elastic Beanstalk using Multi Container | System Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)This guide shows you how to setup WebApp  on Elastic Beanstalk using the [PHP-FPM]and [Nginx] Docker images.
+The procedure of">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Set up website on Elastic Beanstalk using Multi Container">
+<meta property="og:url" content="http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/index.html">
+<meta property="og:site_name" content="System Admin">
+<meta property="og:description" content="Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)This guide shows you how to setup WebApp  on Elastic Beanstalk using the [PHP-FPM]and [Nginx] Docker images.
+The procedure of">
+<meta property="og:image" content="http://christhai.github.io/images/201607/image_6.png">
+<meta property="og:updated_time" content="2016-07-04T20:03:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Set up website on Elastic Beanstalk using Multi Container">
+<meta name="twitter:description" content="Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)This guide shows you how to setup WebApp  on Elastic Beanstalk using the [PHP-FPM]and [Nginx] Docker images.
+The procedure of">
+<meta name="twitter:image" content="http://christhai.github.io/images/201607/image_6.png">
+  
+    <link rel="alternate" href="/atom.xml" title="System Admin" type="application/atom+xml">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">System Admin</h1>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-Set-up-website-on-Elastic-Beanstalk-using-Multi-Container" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      Set up website on Elastic Beanstalk using Multi Container
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/" class="article-date"><time datetime="2016-07-04T19:00:49.000Z" itemprop="datePublished">2016-07-04</time></a>
+</div>
+
+    
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Set-up-website-on-Elastic-Beanstalk-using-Multi-Container-PHP-FPM-Nginx"><a href="#Set-up-website-on-Elastic-Beanstalk-using-Multi-Container-PHP-FPM-Nginx" class="headerlink" title="Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)"></a>Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)</h2><p>This guide shows you how to setup WebApp  on Elastic Beanstalk using the [PHP-FPM]and [Nginx] Docker images.</p>
+<h2 id="The-procedure-of-making-this-work"><a href="#The-procedure-of-making-this-work" class="headerlink" title="The procedure of making this work"></a>The procedure of making this work</h2><p><a href="#heading=h.rilr6oluuna3">First step, covert docker compose file to Dockerrun.aws.json</a></p>
+<p><a href="#heading=h.txmc5fcrcsi1">Second step, link to RDS</a></p>
+<p>—-&gt;   Think of security group, the instance  need access to RDS</p>
+<p>—-&gt;   Connecting MYSQL RDS needs php-mysql inside docker</p>
+<p>—-&gt;   Upload prebuild or private docker image (PHP with php-mysql) to ECR</p>
+<hr>
+<a id="more"></a>
+<h3 id="First-step-covert-docker-compose-file-to-Dockerrun-aws-json"><a href="#First-step-covert-docker-compose-file-to-Dockerrun-aws-json" class="headerlink" title="First step, covert docker compose file to Dockerrun.aws.json"></a>First step, covert docker compose file to Dockerrun.aws.json</h3><p>Follow this tutorial  <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html" target="_blank" rel="external">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html</a></p>
+<p><strong>Topics</strong></p>
+<ul>
+<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_role" target="_blank" rel="external">Configure a Container Instance IAM Role</a></p>
+</li>
+<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_config" target="_blank" rel="external">Define Docker Containers</a></p>
+</li>
+<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_code" target="_blank" rel="external">Add Content</a></p>
+</li>
+<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_deploy" target="_blank" rel="external">Deploy to Elastic Beanstalk</a></p>
+</li>
+<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_connect" target="_blank" rel="external">Connect to a Container Instance</a></p>
+</li>
+<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create_deploy_docker_ecstutorial_connect_inspect" target="_blank" rel="external">Inspect the Amazon ECS Container Agent</a></p>
+</li>
+</ul>
+<p>PS: you can login to the EC2 instance which host docker containers and  the WebAPP could be found on /var/app/current:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ec2-user@ip-10-0-0-117 ~]$ <span class="keyword">ls</span> /<span class="keyword">var</span>/<span class="keyword">app</span>/current</span><br><span class="line">Dockerrun.aws.json  php-<span class="keyword">app</span>  proxy</span><br></pre></td></tr></table></figure>
+<p>Until now, the webapp is running without the mysql connection</p>
+<h3 id="Second-step-link-to-RDS-Mysql"><a href="#Second-step-link-to-RDS-Mysql" class="headerlink" title="Second step, link to RDS Mysql"></a>Second step, link to RDS Mysql</h3><h4 id="1-Think-of-security-group-the-instance-need-access-to-RDS"><a href="#1-Think-of-security-group-the-instance-need-access-to-RDS" class="headerlink" title="1. Think of security group, the instance  need access to RDS"></a>1. Think of security group, the instance  need access to RDS</h4><p><a href="http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithSecurityGroups.html#USER_WorkingWithSecurityGroups.AuthorizingEC2" target="_blank" rel="external">http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithSecurityGroups.html#USER_WorkingWithSecurityGroups.AuthorizingEC2</a></p>
+<p>Login into EC2 instance and see whether can be able to visit RDS</p>
+<p>troubleshooting</p>
+<p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/java-rds.html#create_deploy_Java.rds.troubleshooting" target="_blank" rel="external">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/java-rds.html#create_deploy_Java.rds.troubleshooting</a></p>
+<p>More reference:</p>
+<p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_PHP.rds.html" target="_blank" rel="external">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_PHP.rds.html</a></p>
+<p><a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.RDS.html" target="_blank" rel="external">https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.RDS.html</a></p>
+<p><a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.RDS.html#rds-external-ec2classic" target="_blank" rel="external">https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.RDS.html#rds-external-ec2classic</a></p>
+<p>So far, EC2 instance can access to RDS mysql however Webapp still not work.</p>
+<p>We need mysql client to connect BY USING php-mysql</p>
+<h4 id="2-Connecting-MYSQL-RDS-needs-php-mysql-inside-docker"><a href="#2-Connecting-MYSQL-RDS-needs-php-mysql-inside-docker" class="headerlink" title="2. Connecting MYSQL RDS needs php-mysql inside docker"></a>2. Connecting MYSQL RDS needs php-mysql inside docker</h4><p>Firstly, I add one more database container and test. It was not working.<br>Then I realized I do not need a separate DB container actually. The thing I need is the prebuild or private docker image (PHP with php-mysql)**</p>
+<p>Here is a good doc i followed that solved this:</p>
+<p><a href="http://www.michaelgallego.fr/blog/2015/07/18/using-elastic-beanstalk-multi-container-with-php/" target="_blank" rel="external">http://www.michaelgallego.fr/blog/2015/07/18/using-elastic-beanstalk-multi-container-with-php/</a></p>
+<p>I wanna use docker private images (haiw/php-fpm) in Dockerrun.aws.json, but after testing, I found that it is not allowed and it cause deploy issue.  </p>
+<p>Need to figure out a alternative way.</p>
+<h4 id="3-Upload-prebuild-or-private-docker-image-PHP-with-php-mysql-to-ECR"><a href="#3-Upload-prebuild-or-private-docker-image-PHP-with-php-mysql-to-ECR" class="headerlink" title="3. Upload prebuild or private docker image (PHP with php-mysql) to ECR"></a>3. Upload prebuild or private docker image (PHP with php-mysql) to ECR</h4><p>Toturial:<br><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html#docker-images-private" target="_blank" rel="external">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html#docker-images-private</a></p>
+<p>Here is what I did,  </p>
+<p><a href="http://aws.amazon.com/ecr/getting-started/" target="_blank" rel="external">http://aws.amazon.com/ecr/getting-started/</a></p>
+<p>upload docker image to Amazon ECR to use</p>
+<p><img src="images/201607/image_6.png" alt="image alt text"></p>
+<p><a href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/get-set-up-for-amazon-ecr.html" target="_blank" rel="external">http://docs.aws.amazon.com/AmazonECR/latest/userguide/get-set-up-for-amazon-ecr.html</a></p>
+<p>Commands review:</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="symbol">543 </span> aws ecr <span class="keyword">get</span>-login --region us-east-<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">544 </span> aws configure</span><br><span class="line"></span><br><span class="line"><span class="symbol">545 </span> aws ecr <span class="keyword">get</span>-login --region us-east-<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">546 </span> ls</span><br><span class="line"></span><br><span class="line"><span class="symbol">547 </span> docker login -u AWS -p CiBwm0YaISJ</span><br><span class="line"></span><br><span class="line"><span class="symbol">566 </span> docker build -t haiw/php-fpm:latest .</span><br><span class="line"></span><br><span class="line"><span class="symbol">567 </span> docker images</span><br><span class="line"></span><br><span class="line"><span class="symbol">568 </span> docker tag  haiw/php-fpm:latest <span class="number">429834746942.d</span>kr.ecr.us-east-<span class="number">1.</span>amazonaws.<span class="keyword">com</span>/php-fpm:latest</span><br><span class="line"></span><br><span class="line"><span class="symbol">569 </span> docker push <span class="number">429834746942.d</span>kr.ecr.us-east-<span class="number">1.</span>amazonaws.<span class="keyword">com</span>/php-fpm:latest</span><br></pre></td></tr></table></figure>
+<p>EB APP use docker image from ECR, it also requires permission</p>
+<h4 id="4-Configure-Container-Instance-IAM-Role"><a href="#4-Configure-Container-Instance-IAM-Role" class="headerlink" title="4.Configure Container Instance IAM Role"></a>4.Configure Container Instance IAM Role</h4><p>Instances in a multicontainer Docker environment must have an instance profile with permission to access Amazon EC2 Container Service (Amazon ECS), the service that Elastic Beanstalk uses to coordinate container deployments. To grant Amazon ECS access to the instances in your environment, you must create an IAM container instance policy and attach the policy to the correct IAM role.</p>
+<p><strong>Topics</strong></p>
+<ul>
+<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create-policy" target="_blank" rel="external">Create the Policy</a></p>
+</li>
+<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#create-role" target="_blank" rel="external">Create the Role (if needed)</a></p>
+</li>
+<li><p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker_ecstutorial.html#attach-policy" target="_blank" rel="external">Attach the Policy to the Role</a></p>
+</li>
+</ul>
+<p>Conclude:<br>EC2 instance needs security group   and   IAM  role   </p>
+<p><strong>让rds给instance  权限 从rds 的 security groups中去授权</strong></p>
+<p><strong>而instance访问 ecs 或者 ecr 在 IAM中设置 </strong></p>
+<p>给 <strong>aws-elasticbeanstalk-ec2-role</strong> 授予权限</p>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/" data-id="ciqdpq0p100014slrum27rvte" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+        <a href="http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/#disqus_thread" class="article-comment-link">
+          <i class="fa fa-comment"></i> Comments
+        </a>
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">Create a new php-fpm docker image on AWS ECR</span>
+    </a>
+  </li>
+  
+  
+  <li role="presentation">
+    <a href="/2016/07/04/Using-EB-CLI/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">Using EB CLI</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
+  
+</ul>
+
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+
+</div>
+
+
+  
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/DOCKER-AMAZON/">DOCKER AMAZON</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Git/">Git</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tag Cloud</h4>
+    <p class="tagcloud">
+      <a href="/tags/DOCKER-AMAZON/" style="font-size: 10px;">DOCKER AMAZON</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a>
+    </p>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">July 2016</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">June 2016</a><span class="sidebar-module-list-count">3</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/2016/07/07/TEST-DOCKER-CLOUD-TUTUM-CD-AUTO-TOOL/">TEST DOCKER.CLOUD(TUTUM) CD AUTO TOOL</a>
+        </li>
+      
+        <li>
+          <a href="/2016/07/04/Using-EB-CLI/">Using EB CLI</a>
+        </li>
+      
+        <li>
+          <a href="/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/">Set up website on Elastic Beanstalk using Multi Container</a>
+        </li>
+      
+        <li>
+          <a href="/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/">Create a new php-fpm docker image on AWS ECR</a>
+        </li>
+      
+        <li>
+          <a href="/2016/06/29/Git-Skills/">Git Skills</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Jonathan Wu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'christhai-sysadmin';
+  
+  var disqus_url = 'http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+</body>
+</html>

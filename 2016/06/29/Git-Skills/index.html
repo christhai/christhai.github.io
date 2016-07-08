@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Git Skills | System Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="How do I resolve git saying “Commit your changes or stash them before you can merge”?you can’t merge with local modifications. Git protects you from losing potentially important changes. You have thre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git Skills">
+<meta property="og:url" content="http://christhai.github.io/2016/06/29/Git-Skills/index.html">
+<meta property="og:site_name" content="System Admin">
+<meta property="og:description" content="How do I resolve git saying “Commit your changes or stash them before you can merge”?you can’t merge with local modifications. Git protects you from losing potentially important changes. You have thre">
+<meta property="og:updated_time" content="2016-06-29T18:42:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git Skills">
+<meta name="twitter:description" content="How do I resolve git saying “Commit your changes or stash them before you can merge”?you can’t merge with local modifications. Git protects you from losing potentially important changes. You have thre">
+  
+    <link rel="alternate" href="/atom.xml" title="System Admin" type="application/atom+xml">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">System Admin</h1>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-Git-Skills" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      Git Skills
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2016/06/29/Git-Skills/" class="article-date"><time datetime="2016-06-29T18:19:56.000Z" itemprop="datePublished">2016-06-29</time></a>
+</div>
+
+    
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="How-do-I-resolve-git-saying-“Commit-your-changes-or-stash-them-before-you-can-merge”"><a href="#How-do-I-resolve-git-saying-“Commit-your-changes-or-stash-them-before-you-can-merge”" class="headerlink" title="How do I resolve git saying “Commit your changes or stash them before you can merge”?"></a><a href="http://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-your-changes-or-stash-them-before-you-can-me" target="_blank" rel="external">How do I resolve git saying “Commit your changes or stash them before you can merge”?</a></h1><p>you can’t merge with local modifications. Git protects you from losing potentially important changes. You have three options. One is to commit the change using</p>
+<p>git commit -m “My message”</p>
+<p>The second is to stash it. stashing acts as a stack, where you can push changes, and you pop them in reverse order.</p>
+<p>To stash type:</p>
+<p>git stash</p>
+<p>Do the merge, and than pull the stash:</p>
+<p>git stash pop</p>
+<a id="more"></a>
+<p>The third options is to discard the local changes using git reset –hard</p>
+<h1 id="How-to-view-file-diff-in-git-before-commit"><a href="#How-to-view-file-diff-in-git-before-commit" class="headerlink" title="How to view file diff in git before commit"></a><a href="http://stackoverflow.com/questions/10039747/how-to-view-file-diff-in-git-before-commit" target="_blank" rel="external">How to view file diff in git before commit</a></h1><p>If you want to see what you haven’t git added yet:</p>
+<p>git diff – myfile.txt</p>
+<p>or if you want to see already-added changes</p>
+<p>git diff –cached – myfile.txt</p>
+<p>or</p>
+<p>git diff HEAD file</p>
+<p>will show you changes you added to your worktree from the last commit. All the changes (staged or not staged) will be shown.</p>
+<h1 id="Showing-which-files-have-changed-between-two-revisions"><a href="#Showing-which-files-have-changed-between-two-revisions" class="headerlink" title="Showing which files have changed between two revisions"></a><a href="http://stackoverflow.com/questions/822811/showing-which-files-have-changed-between-two-revisions" target="_blank" rel="external">Showing which files have changed between two revisions</a></h1><p>Try</p>
+<p>$ git diff –name-status master..branchName</p>
+<h1 id="How-can-I-compare-files-from-two-different-branches"><a href="#How-can-I-compare-files-from-two-different-branches" class="headerlink" title="How can I compare files from two different branches?"></a><a href="http://stackoverflow.com/questions/4099742/how-can-i-compare-files-from-two-different-branches" target="_blank" rel="external">How can I compare files from two different branches?</a></h1><p>git diff can show you the difference between two commits:</p>
+<p>git diff mybranch master – myfile.cs</p>
+<h1 id="Differences-for-a-certain-folder-between-remote-git-branches"><a href="#Differences-for-a-certain-folder-between-remote-git-branches" class="headerlink" title="Differences for a certain folder between remote git branches"></a><a href="http://stackoverflow.com/questions/12123633/differences-for-a-certain-folder-between-git-branches" target="_blank" rel="external">Differences for a certain folder between remote git branches</a></h1><p>git diff master..origin/yourbranch path/to/folder</p>
+<h1 id="How-do-you-merge-selective-files-with-git-merge"><a href="#How-do-you-merge-selective-files-with-git-merge" class="headerlink" title="How do you merge selective files with git-merge?"></a><a href="http://stackoverflow.com/questions/449541/how-do-you-merge-selective-files-with-git-merge" target="_blank" rel="external">How do you merge selective files with git-merge?</a></h1><p><a href="http://stackoverflow.com/questions/449541/how-do-you-merge-selective-files-with-git-merge" target="_blank" rel="external">http://stackoverflow.com/questions/449541/how-do-you-merge-selective-files-with-git-merge</a></p>
+<p>use git add –patch or possibly git add –interactive which allows you to add just parts of a hun</p>
+<p><a href="https://www.haykranen.nl/2011/07/18/git-merging-specific-files-from-another-branch/" target="_blank" rel="external">https://www.haykranen.nl/2011/07/18/git-merging-specific-files-from-another-branch/</a></p>
+<h1 id="Git-Delete-a-branch-local-or-remote"><a href="#Git-Delete-a-branch-local-or-remote" class="headerlink" title="Git: Delete a branch (local or remote)"></a><strong>Git: Delete a branch (local or remote)</strong></h1><p>To delete a local branch</p>
+<p>git branch -d the_local_branch</p>
+<p>To remove a remote branch (if you know what you are doing!)</p>
+<p>git push origin :the_remote_branch</p>
+<h1 id="Git-HowTo-revert-a-commit-already-pushed-to-a-remote-repository"><a href="#Git-HowTo-revert-a-commit-already-pushed-to-a-remote-repository" class="headerlink" title="Git HowTo: revert a commit already pushed to a remote repository"></a><strong>Git HowTo: revert a commit already pushed to a remote repository</strong></h1><h2 id="Case-1-Delete-the-last-commit"><a href="#Case-1-Delete-the-last-commit" class="headerlink" title="Case 1: Delete the last commit"></a><strong>Case 1: Delete the last commit</strong></h2><p>Deleting the last commit is the easiest case. Let’s say we have a remote <em>mathnet</em>with branch <em>master</em> that currently points to commit <em>dd61ab32</em>. We want to remove the top commit. Translated to git terminology, we want to force the <em>master</em> branch of the <em>mathnet</em> remote repository to the parent of <em>dd61ab32</em>:</p>
+<table><br>  <tr><br>    <td>1:<br></td><br>    <td>$ git push mathnet +dd61ab32^:master<br></td><br>  </tr><br></table>
+
+
+<p>Where git interprets x^ as the parent of x and + as a forced non-fastforward push. If you have the master branch checked out locally, you can also do it in two simpler steps: First reset the branch to the parent of the current commit, then force-push it to the remote.</p>
+<table><br>  <tr><br>    <td>1:<br>2:<br></td><br>    <td>$ git reset HEAD^ –hard<br>$ git push mathnet -f</td><br>  </tr><br></table>
+
+
+<h3 id="Undo-a-commit-and-redo"><a href="#Undo-a-commit-and-redo" class="headerlink" title="Undo a commit and redo"></a><strong>Undo a commit and redo</strong></h3><p>$ git commit -m “Something terribly misguided” (1)</p>
+<p>$ git reset –soft HEAD~ (2)</p>
+<h1 id="git-ahead-behind-info-between-master-and-branch"><a href="#git-ahead-behind-info-between-master-and-branch" class="headerlink" title="git ahead/behind info between master and branch?"></a><a href="http://stackoverflow.com/questions/20433867/git-ahead-behind-info-between-master-and-branch" target="_blank" rel="external">git ahead/behind info between master and branch?</a></h1><p>First of all to see how many revisions you are behind locally, you should do a git fetch to make sure you have the latest info from your remote.</p>
+<p>The default output of git status tells you how many revisions you are ahead or behind, but usually I find this too verbose:</p>
+<p>$ git status # On branch master # Your branch and ‘origin/master’ have diverged, # and have 2 and 1 different commit each, respectively. # nothing to commit (working directory clean)</p>
+<p>I prefer git status -sb:</p>
+<p>$ git status -sb ## master…origin/master [ahead 2, behind 1]</p>
+<p>In fact I alias this to simply git s, and this is the main command I use for checking status.</p>
+<p>To see the diff in the “ahead revisions” of master, I can exclude the “behind revisions” from origin/master:</p>
+<p>git diff master..origin/master^</p>
+<p>To see the diff in the “behind revisions” of origin/master, I can exclude the “ahead revisions” from master:</p>
+<p>git diff origin/master..master^^</p>
+<p>If there are 5 revisions ahead or behind it might be easier to write like this:</p>
+<p>git diff master..origin/master~5 git diff origin/master..master~5</p>
+<h1 id="Git-Branching-Basic-Branching-and-Merging"><a href="#Git-Branching-Basic-Branching-and-Merging" class="headerlink" title="Git Branching - Basic Branching and Merging"></a>Git Branching - Basic Branching and Merging</h1><p><a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging" target="_blank" rel="external">https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging</a></p>
+<h1 id="Get-changes-from-master-into-branch-in-git"><a href="#Get-changes-from-master-into-branch-in-git" class="headerlink" title="Get changes from master into branch in git"></a><a href="http://stackoverflow.com/questions/5340724/get-changes-from-master-into-branch-in-git" target="_blank" rel="external">Get changes from master into branch in git</a></h1><p>Checkout the aq branch, then rebase from master.</p>
+<p>git checkout aq</p>
+<p>git rebase master</p>
+<h1 id="Git-Branching-Rebasing"><a href="#Git-Branching-Rebasing" class="headerlink" title="Git Branching - Rebasing"></a>Git Branching - Rebasing</h1><p><a href="https://git-scm.com/book/en/v2/Git-Branching-Rebasing" target="_blank" rel="external">https://git-scm.com/book/en/v2/Git-Branching-Rebasing</a></p>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://christhai.github.io/2016/06/29/Git-Skills/" data-id="ciqdpq0p300034slrx7cafd2p" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      
+        <a href="http://christhai.github.io/2016/06/29/Git-Skills/#disqus_thread" class="article-comment-link">
+          <i class="fa fa-comment"></i> Comments
+        </a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/2016/06/27/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">Hello World</span>
+    </a>
+  </li>
+  
+  
+  <li role="presentation">
+    <a href="/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">Create a new php-fpm docker image on AWS ECR</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
+  
+</ul>
+
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+
+</div>
+
+
+  
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/DOCKER-AMAZON/">DOCKER AMAZON</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Git/">Git</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tag Cloud</h4>
+    <p class="tagcloud">
+      <a href="/tags/DOCKER-AMAZON/" style="font-size: 10px;">DOCKER AMAZON</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a>
+    </p>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">July 2016</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">June 2016</a><span class="sidebar-module-list-count">3</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/2016/07/07/TEST-DOCKER-CLOUD-TUTUM-CD-AUTO-TOOL/">TEST DOCKER.CLOUD(TUTUM) CD AUTO TOOL</a>
+        </li>
+      
+        <li>
+          <a href="/2016/07/04/Using-EB-CLI/">Using EB CLI</a>
+        </li>
+      
+        <li>
+          <a href="/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/">Set up website on Elastic Beanstalk using Multi Container</a>
+        </li>
+      
+        <li>
+          <a href="/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/">Create a new php-fpm docker image on AWS ECR</a>
+        </li>
+      
+        <li>
+          <a href="/2016/06/29/Git-Skills/">Git Skills</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Jonathan Wu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'christhai-sysadmin';
+  
+  var disqus_url = 'http://christhai.github.io/2016/06/29/Git-Skills/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+</body>
+</html>
