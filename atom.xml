@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://christhai.github.io/"/>
+  <link href="http://christhai.github.io/"/>
   <updated>2016-07-07T11:14:41.000Z</updated>
-  <id>https://christhai.github.io/</id>
+  <id>http://christhai.github.io/</id>
   
   <author>
     <name>Jonathan Wu</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>TEST DOCKER.CLOUD(TUTUM) CD AUTO TOOL</title>
-    <link href="https://christhai.github.io/2016/07/07/TEST-DOCKER-CLOUD-TUTUM-CD-AUTO-TOOL/"/>
-    <id>https://christhai.github.io/2016/07/07/TEST-DOCKER-CLOUD-TUTUM-CD-AUTO-TOOL/</id>
+    <link href="http://christhai.github.io/2016/07/07/TEST-DOCKER-CLOUD-TUTUM-CD-AUTO-TOOL/"/>
+    <id>http://christhai.github.io/2016/07/07/TEST-DOCKER-CLOUD-TUTUM-CD-AUTO-TOOL/</id>
     <published>2016-07-07T08:44:29.000Z</published>
     <updated>2016-07-07T11:14:41.000Z</updated>
     
@@ -38,14 +38,14 @@
     </summary>
     
     
-      <category term="DOCKER AMAZON" scheme="https://christhai.github.io/tags/DOCKER-AMAZON/"/>
+      <category term="DOCKER AMAZON" scheme="http://christhai.github.io/tags/DOCKER-AMAZON/"/>
     
   </entry>
   
   <entry>
     <title>Using EB CLI</title>
-    <link href="https://christhai.github.io/2016/07/04/Using-EB-CLI/"/>
-    <id>https://christhai.github.io/2016/07/04/Using-EB-CLI/</id>
+    <link href="http://christhai.github.io/2016/07/04/Using-EB-CLI/"/>
+    <id>http://christhai.github.io/2016/07/04/Using-EB-CLI/</id>
     <published>2016-07-04T19:19:34.000Z</published>
     <updated>2016-07-04T19:34:57.000Z</updated>
     
@@ -101,8 +101,8 @@
   
   <entry>
     <title>Set up website on Elastic Beanstalk using Multi Container</title>
-    <link href="https://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/"/>
-    <id>https://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/</id>
+    <link href="http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/"/>
+    <id>http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/</id>
     <published>2016-07-04T19:00:49.000Z</published>
     <updated>2016-07-04T20:03:23.000Z</updated>
     
@@ -190,8 +190,8 @@
   
   <entry>
     <title>Create a new php-fpm docker image on AWS ECR</title>
-    <link href="https://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/"/>
-    <id>https://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/</id>
+    <link href="http://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/"/>
+    <id>http://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/</id>
     <published>2016-06-29T19:08:16.000Z</published>
     <updated>2016-07-04T18:21:28.000Z</updated>
     
@@ -210,8 +210,8 @@
   
   <entry>
     <title>Git Skills</title>
-    <link href="https://christhai.github.io/2016/06/29/Git-Skills/"/>
-    <id>https://christhai.github.io/2016/06/29/Git-Skills/</id>
+    <link href="http://christhai.github.io/2016/06/29/Git-Skills/"/>
+    <id>http://christhai.github.io/2016/06/29/Git-Skills/</id>
     <published>2016-06-29T18:19:56.000Z</published>
     <updated>2016-06-29T18:42:26.000Z</updated>
     
@@ -285,14 +285,14 @@
     </summary>
     
     
-      <category term="Git" scheme="https://christhai.github.io/tags/Git/"/>
+      <category term="Git" scheme="http://christhai.github.io/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://christhai.github.io/2016/06/27/hello-world/"/>
-    <id>https://christhai.github.io/2016/06/27/hello-world/</id>
+    <link href="http://christhai.github.io/2016/06/27/hello-world/"/>
+    <id>http://christhai.github.io/2016/06/27/hello-world/</id>
     <published>2016-06-27T16:05:12.000Z</published>
     <updated>2016-06-29T18:43:00.000Z</updated>
     
