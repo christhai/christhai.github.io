@@ -14,7 +14,7 @@ The procedure of">
 <meta property="og:description" content="Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)This guide shows you how to setup WebApp  on Elastic Beanstalk using the [PHP-FPM]and [Nginx] Docker images.
 The procedure of">
 <meta property="og:image" content="http://christhai.github.io/images/201607/image_6.png">
-<meta property="og:updated_time" content="2016-07-04T20:03:23.000Z">
+<meta property="og:updated_time" content="2016-07-11T09:02:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Set up website on Elastic Beanstalk using Multi Container">
 <meta name="twitter:description" content="Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)This guide shows you how to setup WebApp  on Elastic Beanstalk using the [PHP-FPM]and [Nginx] Docker images.
@@ -133,7 +133,7 @@ The procedure of">
 <p>Here is what I did,  </p>
 <p><a href="http://aws.amazon.com/ecr/getting-started/" target="_blank" rel="external">http://aws.amazon.com/ecr/getting-started/</a></p>
 <p>upload docker image to Amazon ECR to use</p>
-<p><img src="images/201607/image_6.png" alt="image alt text"></p>
+<p>  <img src="/images/201607/image_6.png" alt=""></p>
 <p><a href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/get-set-up-for-amazon-ecr.html" target="_blank" rel="external">http://docs.aws.amazon.com/AmazonECR/latest/userguide/get-set-up-for-amazon-ecr.html</a></p>
 <p>Commands review:</p>
 <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="symbol">543 </span> aws ecr <span class="keyword">get</span>-login --region us-east-<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">544 </span> aws configure</span><br><span class="line"></span><br><span class="line"><span class="symbol">545 </span> aws ecr <span class="keyword">get</span>-login --region us-east-<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">546 </span> ls</span><br><span class="line"></span><br><span class="line"><span class="symbol">547 </span> docker login -u AWS -p CiBwm0YaISJ</span><br><span class="line"></span><br><span class="line"><span class="symbol">566 </span> docker build -t haiw/php-fpm:latest .</span><br><span class="line"></span><br><span class="line"><span class="symbol">567 </span> docker images</span><br><span class="line"></span><br><span class="line"><span class="symbol">568 </span> docker tag  haiw/php-fpm:latest <span class="number">429834746942.d</span>kr.ecr.us-east-<span class="number">1.</span>amazonaws.<span class="keyword">com</span>/php-fpm:latest</span><br><span class="line"></span><br><span class="line"><span class="symbol">569 </span> docker push <span class="number">429834746942.d</span>kr.ecr.us-east-<span class="number">1.</span>amazonaws.<span class="keyword">com</span>/php-fpm:latest</span><br></pre></td></tr></table></figure>
@@ -156,7 +156,7 @@ The procedure of">
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/" data-id="ciqhrcb1q000271lr5u09kbjm" class="article-share-link">Share</a>
+      <a data-url="http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/" data-id="ciqhswqiv0005cblryehbsgc4" class="article-share-link">Share</a>
       
         <a href="http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/#disqus_thread" class="article-comment-link">Comments</a>
       

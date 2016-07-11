@@ -12,7 +12,8 @@
 <meta property="og:site_name" content="System Admin">
 <meta property="og:description" content="You can store your custom Docker images in AWS with Amazon EC2 Container Registry (Amazon ECR). When you store your Docker images in Amazon ECR, Elastic Beanstalk automatically authenticates to the Am">
 <meta property="og:image" content="http://christhai.github.io/images/201607/image_6.png">
-<meta property="og:updated_time" content="2016-07-11T08:14:33.000Z">
+<meta property="og:image" content="http://christhai.github.io/images/201607/image_7.png">
+<meta property="og:updated_time" content="2016-07-11T08:53:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Create and push php-fpm docker image on AWS ECR(Container Registry)">
 <meta name="twitter:description" content="You can store your custom Docker images in AWS with Amazon EC2 Container Registry (Amazon ECR). When you store your Docker images in Amazon ECR, Elastic Beanstalk automatically authenticates to the Am">
@@ -89,6 +90,7 @@
 <p><a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html#docker-images-private" target="_blank" rel="external">http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.html#docker-images-private</a></p>
 <p>or you can get started from here and follow the guide:</p>
 <p><a href="http://aws.amazon.com/ecr/getting-started/" target="_blank" rel="external">http://aws.amazon.com/ecr/getting-started/</a></p>
+<a id="more"></a>
 <p>Take a example,  Create a new php-fpm docker image on AWS ECR Used for docker muti-container on EB</p>
 <p><strong>Command review:</strong></p>
 <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="symbol">480 </span> aws ecr <span class="keyword">get</span>-login --region us-east-<span class="number">1</span></span><br><span class="line"><span class="symbol">481 </span> docker login -u AWS -p</span><br><span class="line"><span class="symbol">482 </span> docker images</span><br><span class="line"><span class="symbol">483 </span> docker build -t christhai/php-app .</span><br><span class="line"><span class="symbol">491 </span> docker tag christhai/php-app:latest <span class="number">42</span>xxxxxxxx2.dkr.ecr.us-east-<span class="number">1.</span>amazonaws.<span class="keyword">com</span>/christhai:php-app</span><br><span class="line"><span class="symbol">492 </span> docker images</span><br><span class="line"><span class="symbol">493 </span> docker push <span class="number">42</span>xxxxxxxx2.dkr.ecr.us-east-<span class="number">1.</span>amazonaws.<span class="keyword">com</span>/christhai:php-app</span><br></pre></td></tr></table></figure>
@@ -96,12 +98,12 @@
 <p>  <strong>The another thing we have to think about grant permission to instance or EB application IAM ROLE use container from ECR.</strong></p>
 <p>  Take export-server as example, the EB application IAM Role is aws-eleasticbeanstalk-ec2-role</p>
 <p>  Since export serve is build from docker image on Amazon ECR, then we should assign the policy “<a href="https://console.aws.amazon.com/iam/home?region=us-west-2#policies/arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess" target="_blank" rel="external">AmazonEC2ContainerRegistryFullAccess</a>“  to aws-eleasticbeanstalk-ec2-role</p>
-<pre><code>![](/images/201607/image_7.png)
-</code></pre>
+<p>  <img src="/images/201607/image_7.png" alt=""></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/" data-id="ciqhrcb1f000071lrt803esm7" class="article-share-link">Share</a>
+      <a data-url="http://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/" data-id="ciqhswqhz0000cblrb5390cdw" class="article-share-link">Share</a>
       
         <a href="http://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/#disqus_thread" class="article-comment-link">Comments</a>
       
