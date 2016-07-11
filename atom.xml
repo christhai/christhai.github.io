@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://christhai.github.io/"/>
-  <updated>2016-07-11T07:33:48.000Z</updated>
+  <updated>2016-07-11T12:26:40.000Z</updated>
   <id>http://christhai.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://christhai.github.io/2016/07/11/Deploying-Applications-with-Elastic-Beanstalk/"/>
     <id>http://christhai.github.io/2016/07/11/Deploying-Applications-with-Elastic-Beanstalk/</id>
     <published>2016-07-11T07:31:28.000Z</published>
-    <updated>2016-07-11T07:33:48.000Z</updated>
+    <updated>2016-07-11T12:26:40.000Z</updated>
     
     <content type="html">&lt;p&gt;Elastic Beanstalk Key Concepts&lt;/p&gt;
 &lt;p&gt;Deploying a Web App with Beanstalk&lt;/p&gt;
@@ -40,6 +40,8 @@
     </summary>
     
     
+      <category term="Amazon Elastic Beanstalk" scheme="http://christhai.github.io/tags/Amazon-Elastic-Beanstalk/"/>
+    
   </entry>
   
   <entry>
@@ -47,7 +49,7 @@
     <link href="http://christhai.github.io/2016/07/07/TEST-DOCKER-CLOUD-TUTUM-CD-AUTO-TOOL/"/>
     <id>http://christhai.github.io/2016/07/07/TEST-DOCKER-CLOUD-TUTUM-CD-AUTO-TOOL/</id>
     <published>2016-07-07T08:44:29.000Z</published>
-    <updated>2016-07-11T07:54:50.000Z</updated>
+    <updated>2016-07-11T12:27:47.000Z</updated>
     
     <content type="html">&lt;h3 id=&quot;Step-one-link-to-AMAZON-EC2&quot;&gt;&lt;a href=&quot;#Step-one-link-to-AMAZON-EC2&quot; class=&quot;headerlink&quot; title=&quot;Step one, link to AMAZON EC2&quot;&gt;&lt;/a&gt;Step one, link to AMAZON EC2&lt;/h3&gt;&lt;p&gt;Go to “cloud setting”, - “cloud providers”&lt;/p&gt;
 &lt;p&gt;Create a IAM user “docker” and attach policy  “access to EC2”&lt;/p&gt;
@@ -65,7 +67,7 @@
     </summary>
     
     
-      <category term="DOCKER AMAZON" scheme="http://christhai.github.io/tags/DOCKER-AMAZON/"/>
+      <category term="Docker, CD Automation" scheme="http://christhai.github.io/tags/Docker-CD-Automation/"/>
     
   </entry>
   
@@ -74,9 +76,9 @@
     <link href="http://christhai.github.io/2016/07/04/Using-EB-CLI/"/>
     <id>http://christhai.github.io/2016/07/04/Using-EB-CLI/</id>
     <published>2016-07-04T19:19:34.000Z</published>
-    <updated>2016-07-11T07:53:27.000Z</updated>
+    <updated>2016-07-11T12:28:46.000Z</updated>
     
-    <content type="html">&lt;p&gt;During the Elasticbeanstalk deploy, it is good to use Eb cli command line, then we do not need to compress the Applicaiton.zip and upload the application file through Webconsole.&lt;/p&gt;
+    <content type="html">&lt;p&gt;During the Elastic Beanstalk deploy, it is good to use Eb cli command line, then we do not need to compress the Applicaiton.zip and upload the application file through Webconsole.&lt;/p&gt;
 &lt;p&gt;One thing we need to do is make sure that we can authenticate to AWS before we can actually start deploying applications, so let’s create a brand new user to do this. So I’m going to go back into the AWS console, I’m going to go to Services, and then I’m going to go to AIM for Identity Access and Management. I’m going to go to Users to create a new user. So we’ll call this guy EB and hit Create. Now I’m going to need the access keys here so I’ll go ahead and download the credentials. And I’ll go ahead and open this up with Notepad, cause I’m going to need the keys here in just a minute. But for now, let’s go ahead and close this, and then we’ll set up the permissions for our EB user. So we’ll go into the EB user, go to the permissions tab, and then we’ll go ahead and attach a policy to this user. And of course here you could set up a granular policy based on your requirements. I’m just going to give this user administrator access, so we’ll go ahead and attach that policy, and now that we have a user that has permissions, we’re ready to configure the EB CLI and then we can deploy an application.&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;&lt;strong&gt;Commands review:&lt;/strong&gt;&lt;/p&gt;
@@ -92,11 +94,13 @@
     
     <summary type="html">
     
-      &lt;p&gt;During the Elasticbeanstalk deploy, it is good to use Eb cli command line, then we do not need to compress the Applicaiton.zip and upload the application file through Webconsole.&lt;/p&gt;
+      &lt;p&gt;During the Elastic Beanstalk deploy, it is good to use Eb cli command line, then we do not need to compress the Applicaiton.zip and upload the application file through Webconsole.&lt;/p&gt;
 &lt;p&gt;One thing we need to do is make sure that we can authenticate to AWS before we can actually start deploying applications, so let’s create a brand new user to do this. So I’m going to go back into the AWS console, I’m going to go to Services, and then I’m going to go to AIM for Identity Access and Management. I’m going to go to Users to create a new user. So we’ll call this guy EB and hit Create. Now I’m going to need the access keys here so I’ll go ahead and download the credentials. And I’ll go ahead and open this up with Notepad, cause I’m going to need the keys here in just a minute. But for now, let’s go ahead and close this, and then we’ll set up the permissions for our EB user. So we’ll go into the EB user, go to the permissions tab, and then we’ll go ahead and attach a policy to this user. And of course here you could set up a granular policy based on your requirements. I’m just going to give this user administrator access, so we’ll go ahead and attach that policy, and now that we have a user that has permissions, we’re ready to configure the EB CLI and then we can deploy an application.&lt;/p&gt;
     
     </summary>
     
+    
+      <category term="Amazon, Amazon Elastic Beanstalk" scheme="http://christhai.github.io/tags/Amazon-Amazon-Elastic-Beanstalk/"/>
     
   </entry>
   
@@ -105,7 +109,7 @@
     <link href="http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/"/>
     <id>http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/</id>
     <published>2016-07-04T19:00:49.000Z</published>
-    <updated>2016-07-11T09:02:34.000Z</updated>
+    <updated>2016-07-11T12:26:15.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;Set-up-website-on-Elastic-Beanstalk-using-Multi-Container-PHP-FPM-Nginx&quot;&gt;&lt;a href=&quot;#Set-up-website-on-Elastic-Beanstalk-using-Multi-Container-PHP-FPM-Nginx&quot; class=&quot;headerlink&quot; title=&quot;Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)&quot;&gt;&lt;/a&gt;Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)&lt;/h2&gt;&lt;p&gt;This guide shows you how to setup WebApp  on Elastic Beanstalk using the [PHP-FPM]and [Nginx] Docker images.&lt;/p&gt;
 &lt;h2 id=&quot;The-procedure-of-making-this-work&quot;&gt;&lt;a href=&quot;#The-procedure-of-making-this-work&quot; class=&quot;headerlink&quot; title=&quot;The procedure of making this work&quot;&gt;&lt;/a&gt;The procedure of making this work&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;#heading=h.rilr6oluuna3&quot;&gt;First step, covert docker compose file to Dockerrun.aws.json&lt;/a&gt;&lt;/p&gt;
@@ -187,6 +191,8 @@
     </summary>
     
     
+      <category term="Amazon Elastic Beanstalk, Docker" scheme="http://christhai.github.io/tags/Amazon-Elastic-Beanstalk-Docker/"/>
+    
   </entry>
   
   <entry>
@@ -194,7 +200,7 @@
     <link href="http://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/"/>
     <id>http://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/</id>
     <published>2016-06-29T19:08:16.000Z</published>
-    <updated>2016-07-11T08:53:17.000Z</updated>
+    <updated>2016-07-11T12:27:05.000Z</updated>
     
     <content type="html">&lt;p&gt;You can store your custom Docker images in AWS with &lt;a href=&quot;http://aws.amazon.com/ecr&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Amazon EC2 Container Registry&lt;/a&gt; (Amazon ECR). When you store your Docker images in Amazon ECR, Elastic Beanstalk automatically authenticates to the Amazon ECR registry with your environment’s &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts-roles.html#concepts-roles-instance&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;instance profile&lt;/a&gt;, so you don’t need to &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.container.console.html#docker-images-private&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;generate an authentication file&lt;/a&gt; and upload it to Amazon Simple Storage Service (Amazon S3)&lt;/p&gt;
 &lt;p&gt;The official tutorial is here,&lt;/p&gt;
@@ -222,6 +228,8 @@
     
     </summary>
     
+    
+      <category term="Amazon, Amazon EC2 Container" scheme="http://christhai.github.io/tags/Amazon-Amazon-EC2-Container/"/>
     
   </entry>
   
