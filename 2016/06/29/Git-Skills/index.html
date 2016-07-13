@@ -3,18 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Git Skills | System Admin</title>
+  <title>Git Tips&amp;QFA Collect | System Admin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="How do I resolve git saying “Commit your changes or stash them before you can merge”?you can’t merge with local modifications. Git protects you from losing potentially important changes. You have thre">
+  <meta name="description" content="Topics
+
+Git Commit issue
+Git diff
+Git Branch (merge&amp;amp;delete)
+
+Git Commit issueHow do I resolve git saying “Commit your changes or stash them before you can merge”?you can’t merge with local modific">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git Skills">
+<meta property="og:title" content="Git Tips&QFA Collect">
 <meta property="og:url" content="http://christhai.github.io/2016/06/29/Git-Skills/index.html">
 <meta property="og:site_name" content="System Admin">
-<meta property="og:description" content="How do I resolve git saying “Commit your changes or stash them before you can merge”?you can’t merge with local modifications. Git protects you from losing potentially important changes. You have thre">
-<meta property="og:updated_time" content="2016-06-29T18:42:26.000Z">
+<meta property="og:description" content="Topics
+
+Git Commit issue
+Git diff
+Git Branch (merge&amp;amp;delete)
+
+Git Commit issueHow do I resolve git saying “Commit your changes or stash them before you can merge”?you can’t merge with local modific">
+<meta property="og:updated_time" content="2016-07-13T14:53:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git Skills">
-<meta name="twitter:description" content="How do I resolve git saying “Commit your changes or stash them before you can merge”?you can’t merge with local modifications. Git protects you from losing potentially important changes. You have thre">
+<meta name="twitter:title" content="Git Tips&QFA Collect">
+<meta name="twitter:description" content="Topics
+
+Git Commit issue
+Git diff
+Git Branch (merge&amp;amp;delete)
+
+Git Commit issueHow do I resolve git saying “Commit your changes or stash them before you can merge”?you can’t merge with local modific">
   
     <link rel="alternative" href="/atom.xml" title="System Admin" type="application/atom+xml">
   
@@ -74,7 +92,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Git Skills
+      Git Tips&amp;QFA Collect
     </h1>
   
 
@@ -82,66 +100,54 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="How-do-I-resolve-git-saying-“Commit-your-changes-or-stash-them-before-you-can-merge”"><a href="#How-do-I-resolve-git-saying-“Commit-your-changes-or-stash-them-before-you-can-merge”" class="headerlink" title="How do I resolve git saying “Commit your changes or stash them before you can merge”?"></a><a href="http://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-your-changes-or-stash-them-before-you-can-me" target="_blank" rel="external">How do I resolve git saying “Commit your changes or stash them before you can merge”?</a></h1><p>you can’t merge with local modifications. Git protects you from losing potentially important changes. You have three options. One is to commit the change using</p>
-<p>git commit -m “My message”</p>
+        <p><strong>Topics</strong></p>
+<ul>
+<li><a href="##Git Commit issue">Git Commit issue</a></li>
+<li><a href="##Git Diff">Git diff</a></li>
+<li><a href="##Git Branching">Git Branch (merge&amp;delete)</a></li>
+</ul>
+<h2 id="Git-Commit-issue"><a href="#Git-Commit-issue" class="headerlink" title="Git Commit issue"></a>Git Commit issue</h2><h4 id="How-do-I-resolve-git-saying-“Commit-your-changes-or-stash-them-before-you-can-merge”"><a href="#How-do-I-resolve-git-saying-“Commit-your-changes-or-stash-them-before-you-can-merge”" class="headerlink" title="How do I resolve git saying “Commit your changes or stash them before you can merge”?"></a><a href="http://stackoverflow.com/questions/15745045/how-do-i-resolve-git-saying-commit-your-changes-or-stash-them-before-you-can-me" target="_blank" rel="external">How do I resolve git saying “Commit your changes or stash them before you can merge”?</a></h4><p>you can’t merge with local modifications. Git protects you from losing potentially important changes. You have three options. One is to commit the change using</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git</span> commit -m <span class="string">"My message"</span></span><br></pre></td></tr></table></figure>
 <p>The second is to stash it. stashing acts as a stack, where you can push changes, and you pop them in reverse order.</p>
 <p>To stash type:</p>
-<p>git stash</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git</span> stash</span><br></pre></td></tr></table></figure>
 <p>Do the merge, and than pull the stash:</p>
-<p>git stash pop</p>
-<a id="more"></a>
-<p>The third options is to discard the local changes using git reset –hard</p>
-<h1 id="How-to-view-file-diff-in-git-before-commit"><a href="#How-to-view-file-diff-in-git-before-commit" class="headerlink" title="How to view file diff in git before commit"></a><a href="http://stackoverflow.com/questions/10039747/how-to-view-file-diff-in-git-before-commit" target="_blank" rel="external">How to view file diff in git before commit</a></h1><p>If you want to see what you haven’t git added yet:</p>
-<p>git diff – myfile.txt</p>
-<p>or if you want to see already-added changes</p>
-<p>git diff –cached – myfile.txt</p>
-<p>or</p>
-<p>git diff HEAD file</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash <span class="keyword">pop</span></span><br></pre></td></tr></table></figure>
+<p>The third options is to discard the local changes using git reset –hard<br><a id="more"></a></p>
+<h4 id="Undo-a-commit-and-redo"><a href="#Undo-a-commit-and-redo" class="headerlink" title="Undo a commit and redo"></a>Undo a commit and redo</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="keyword">commit</span> -m <span class="string">"Something terribly misguided"</span> (<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">$ git <span class="keyword">reset</span> <span class="comment">--soft HEAD~ (2)</span></span><br></pre></td></tr></table></figure>
+<h4 id="Git-HowTo-revert-a-commit-already-pushed-to-a-remote-repository"><a href="#Git-HowTo-revert-a-commit-already-pushed-to-a-remote-repository" class="headerlink" title="Git HowTo: revert a commit already pushed to a remote repository"></a>Git HowTo: revert a commit already pushed to a remote repository</h4><p> <strong>Case 1: Delete the last commit</strong></p>
+<p>Deleting the last commit is the easiest case. Let’s say we have a remote <em>mathnet</em>with branch <em>master</em> that currently points to commit <em>dd61ab32</em>. We want to remove the top commit. Translated to git terminology, we want to force the <em>master</em> branch of the <em>mathnet</em> remote repository to the parent of <em>dd61ab32</em>:</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git push mathnet +dd61ab32^<span class="symbol">:master</span></span><br></pre></td></tr></table></figure>
+<p>Where git interprets x^ as the parent of x and + as a forced non-fastforward push. If you have the master branch checked out locally, you can also do it in two simpler steps: First reset the branch to the parent of the current commit, then force-push it to the remote.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="keyword">reset</span> <span class="keyword">HEAD</span>^ <span class="comment">--hard</span></span><br><span class="line"></span><br><span class="line">$ git push mathnet -f</span><br></pre></td></tr></table></figure>
+<h2 id="Git-Diff"><a href="#Git-Diff" class="headerlink" title="Git Diff"></a>Git Diff</h2><h4 id="How-to-view-file-diff-in-git-before-commit"><a href="#How-to-view-file-diff-in-git-before-commit" class="headerlink" title="How to view file diff in git before commit"></a><a href="http://stackoverflow.com/questions/10039747/how-to-view-file-diff-in-git-before-commit" target="_blank" rel="external">How to view file diff in git before commit</a></h4><p>If you want to see what you haven’t git added yet:<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff <span class="comment">-- myfile.txt</span></span><br></pre></td></tr></table></figure></p>
+<p>or if you want to see already-added changes<br><figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">git</span> <span class="comment">diff</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">cached</span> <span class="literal">-</span><span class="literal">-</span> <span class="comment">myfile</span><span class="string">.</span><span class="comment">txt</span></span><br></pre></td></tr></table></figure></p>
+<p>or<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff HEAD <span class="built_in">file</span></span><br></pre></td></tr></table></figure></p>
 <p>will show you changes you added to your worktree from the last commit. All the changes (staged or not staged) will be shown.</p>
-<h1 id="Showing-which-files-have-changed-between-two-revisions"><a href="#Showing-which-files-have-changed-between-two-revisions" class="headerlink" title="Showing which files have changed between two revisions"></a><a href="http://stackoverflow.com/questions/822811/showing-which-files-have-changed-between-two-revisions" target="_blank" rel="external">Showing which files have changed between two revisions</a></h1><p>Try</p>
-<p>$ git diff –name-status master..branchName</p>
-<h1 id="How-can-I-compare-files-from-two-different-branches"><a href="#How-can-I-compare-files-from-two-different-branches" class="headerlink" title="How can I compare files from two different branches?"></a><a href="http://stackoverflow.com/questions/4099742/how-can-i-compare-files-from-two-different-branches" target="_blank" rel="external">How can I compare files from two different branches?</a></h1><p>git diff can show you the difference between two commits:</p>
-<p>git diff mybranch master – myfile.cs</p>
-<h1 id="Differences-for-a-certain-folder-between-remote-git-branches"><a href="#Differences-for-a-certain-folder-between-remote-git-branches" class="headerlink" title="Differences for a certain folder between remote git branches"></a><a href="http://stackoverflow.com/questions/12123633/differences-for-a-certain-folder-between-git-branches" target="_blank" rel="external">Differences for a certain folder between remote git branches</a></h1><p>git diff master..origin/yourbranch path/to/folder</p>
-<h1 id="How-do-you-merge-selective-files-with-git-merge"><a href="#How-do-you-merge-selective-files-with-git-merge" class="headerlink" title="How do you merge selective files with git-merge?"></a><a href="http://stackoverflow.com/questions/449541/how-do-you-merge-selective-files-with-git-merge" target="_blank" rel="external">How do you merge selective files with git-merge?</a></h1><p><a href="http://stackoverflow.com/questions/449541/how-do-you-merge-selective-files-with-git-merge" target="_blank" rel="external">http://stackoverflow.com/questions/449541/how-do-you-merge-selective-files-with-git-merge</a></p>
+<h4 id="Showing-which-files-have-changed-between-two-revisions"><a href="#Showing-which-files-have-changed-between-two-revisions" class="headerlink" title="Showing which files have changed between two revisions"></a><a href="http://stackoverflow.com/questions/822811/showing-which-files-have-changed-between-two-revisions" target="_blank" rel="external">Showing which files have changed between two revisions</a></h4><p>Try<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff --<span class="keyword">name</span>-<span class="keyword">status</span> master..branchName</span><br></pre></td></tr></table></figure></p>
+<h4 id="How-can-I-compare-files-from-two-different-branches"><a href="#How-can-I-compare-files-from-two-different-branches" class="headerlink" title="How can I compare files from two different branches?"></a><a href="http://stackoverflow.com/questions/4099742/how-can-i-compare-files-from-two-different-branches" target="_blank" rel="external">How can I compare files from two different branches?</a></h4><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">diff </span>can <span class="keyword">show </span>you the <span class="keyword">difference </span><span class="keyword">between </span>two commits:</span><br><span class="line"></span><br><span class="line">git <span class="keyword">diff </span>mybranch master -- myfile.cs</span><br></pre></td></tr></table></figure>
+<h4 id="Differences-for-a-certain-folder-between-remote-git-branches"><a href="#Differences-for-a-certain-folder-between-remote-git-branches" class="headerlink" title="Differences for a certain folder between remote git branches"></a><a href="http://stackoverflow.com/questions/12123633/differences-for-a-certain-folder-between-git-branches" target="_blank" rel="external">Differences for a certain folder between remote git branches</a></h4><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">git</span></span> diff master..origin/yourbranch path/to/folder</span><br></pre></td></tr></table></figure>
+<h4 id="git-ahead-behind-info-between-master-and-branch"><a href="#git-ahead-behind-info-between-master-and-branch" class="headerlink" title="git ahead/behind info between master and branch?"></a><a href="http://stackoverflow.com/questions/20433867/git-ahead-behind-info-between-master-and-branch" target="_blank" rel="external">git ahead/behind info between master and branch?</a></h4><p>First of all to see how many revisions you are behind locally, you should do a git fetch to make sure you have the latest info from your remote.</p>
+<p>The default output of git status tells you how many revisions you are ahead or behind, but usually I find this too verbose:</p>
+<p><em>$ git status</em> # On branch master # Your branch and ‘origin/master’ have diverged, # and have 2 and 1 different commit each, respectively. # nothing to commit (working directory clean)</p>
+<p>I prefer <em>git status -sb:</em><br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status -<span class="built_in">sb</span> ## master...origin/master [ahead <span class="number">2</span>, <span class="keyword">behind </span><span class="number">1</span>]</span><br></pre></td></tr></table></figure></p>
+<p>In fact I alias this to simply git s, and this is the main command I use for checking status.</p>
+<p>To see the diff in the “ahead revisions” of master, I can exclude the “behind revisions” from origin/master:<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff <span class="literal">master</span>..origin/<span class="literal">master</span>^</span><br></pre></td></tr></table></figure></p>
+<p>To see the diff in the “behind revisions” of origin/master, I can exclude the “ahead revisions” from master:<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff origin/<span class="literal">master</span>..<span class="literal">master</span>^^</span><br></pre></td></tr></table></figure></p>
+<p>If there are 5 revisions ahead or behind it might be easier to write like this:<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff <span class="literal">master</span>..origin/<span class="literal">master</span>~<span class="number">5</span> git diff origin/<span class="literal">master</span>..<span class="literal">master</span>~<span class="number">5</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Git-Branching"><a href="#Git-Branching" class="headerlink" title="Git Branching"></a>Git Branching</h2><h4 id="Basic-Branching-and-Merging"><a href="#Basic-Branching-and-Merging" class="headerlink" title="Basic Branching and Merging"></a>Basic Branching and Merging</h4><p><a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging" target="_blank" rel="external">https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging</a></p>
+<h4 id="Get-changes-from-master-into-branch-in-git"><a href="#Get-changes-from-master-into-branch-in-git" class="headerlink" title="Get changes from master into branch in git"></a><a href="http://stackoverflow.com/questions/5340724/get-changes-from-master-into-branch-in-git" target="_blank" rel="external">Get changes from master into branch in git</a></h4><p>Checkout the aq branch, then rebase from master.<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout aq</span><br><span class="line"></span><br><span class="line">git rebase <span class="literal">master</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="Git-Branching-Rebasing"><a href="#Git-Branching-Rebasing" class="headerlink" title="Git Branching - Rebasing"></a>Git Branching - Rebasing</h4><p><a href="https://git-scm.com/book/en/v2/Git-Branching-Rebasing" target="_blank" rel="external">https://git-scm.com/book/en/v2/Git-Branching-Rebasing</a></p>
+<h4 id="How-do-you-merge-selective-files-with-git-merge"><a href="#How-do-you-merge-selective-files-with-git-merge" class="headerlink" title="How do you merge selective files with git-merge?"></a><a href="http://stackoverflow.com/questions/449541/how-do-you-merge-selective-files-with-git-merge" target="_blank" rel="external">How do you merge selective files with git-merge?</a></h4><p><a href="http://stackoverflow.com/questions/449541/how-do-you-merge-selective-files-with-git-merge" target="_blank" rel="external">http://stackoverflow.com/questions/449541/how-do-you-merge-selective-files-with-git-merge</a></p>
 <p>use git add –patch or possibly git add –interactive which allows you to add just parts of a hun</p>
 <p><a href="https://www.haykranen.nl/2011/07/18/git-merging-specific-files-from-another-branch/" target="_blank" rel="external">https://www.haykranen.nl/2011/07/18/git-merging-specific-files-from-another-branch/</a></p>
-<h1 id="Git-Delete-a-branch-local-or-remote"><a href="#Git-Delete-a-branch-local-or-remote" class="headerlink" title="Git: Delete a branch (local or remote)"></a><strong>Git: Delete a branch (local or remote)</strong></h1><p>To delete a local branch</p>
-<p>git branch -d the_local_branch</p>
-<p>To remove a remote branch (if you know what you are doing!)</p>
-<p>git push origin :the_remote_branch</p>
-<h1 id="Git-HowTo-revert-a-commit-already-pushed-to-a-remote-repository"><a href="#Git-HowTo-revert-a-commit-already-pushed-to-a-remote-repository" class="headerlink" title="Git HowTo: revert a commit already pushed to a remote repository"></a><strong>Git HowTo: revert a commit already pushed to a remote repository</strong></h1><h2 id="Case-1-Delete-the-last-commit"><a href="#Case-1-Delete-the-last-commit" class="headerlink" title="Case 1: Delete the last commit"></a><strong>Case 1: Delete the last commit</strong></h2><p>Deleting the last commit is the easiest case. Let’s say we have a remote <em>mathnet</em>with branch <em>master</em> that currently points to commit <em>dd61ab32</em>. We want to remove the top commit. Translated to git terminology, we want to force the <em>master</em> branch of the <em>mathnet</em> remote repository to the parent of <em>dd61ab32</em>:</p>
-<table><br>  <tr><br>    <td>1:<br></td><br>    <td>$ git push mathnet +dd61ab32^:master<br></td><br>  </tr><br></table>
-
-
-<p>Where git interprets x^ as the parent of x and + as a forced non-fastforward push. If you have the master branch checked out locally, you can also do it in two simpler steps: First reset the branch to the parent of the current commit, then force-push it to the remote.</p>
-<table><br>  <tr><br>    <td>1:<br>2:<br></td><br>    <td>$ git reset HEAD^ –hard<br>$ git push mathnet -f</td><br>  </tr><br></table>
-
-
-<h3 id="Undo-a-commit-and-redo"><a href="#Undo-a-commit-and-redo" class="headerlink" title="Undo a commit and redo"></a><strong>Undo a commit and redo</strong></h3><p>$ git commit -m “Something terribly misguided” (1)</p>
-<p>$ git reset –soft HEAD~ (2)</p>
-<h1 id="git-ahead-behind-info-between-master-and-branch"><a href="#git-ahead-behind-info-between-master-and-branch" class="headerlink" title="git ahead/behind info between master and branch?"></a><a href="http://stackoverflow.com/questions/20433867/git-ahead-behind-info-between-master-and-branch" target="_blank" rel="external">git ahead/behind info between master and branch?</a></h1><p>First of all to see how many revisions you are behind locally, you should do a git fetch to make sure you have the latest info from your remote.</p>
-<p>The default output of git status tells you how many revisions you are ahead or behind, but usually I find this too verbose:</p>
-<p>$ git status # On branch master # Your branch and ‘origin/master’ have diverged, # and have 2 and 1 different commit each, respectively. # nothing to commit (working directory clean)</p>
-<p>I prefer git status -sb:</p>
-<p>$ git status -sb ## master…origin/master [ahead 2, behind 1]</p>
-<p>In fact I alias this to simply git s, and this is the main command I use for checking status.</p>
-<p>To see the diff in the “ahead revisions” of master, I can exclude the “behind revisions” from origin/master:</p>
-<p>git diff master..origin/master^</p>
-<p>To see the diff in the “behind revisions” of origin/master, I can exclude the “ahead revisions” from master:</p>
-<p>git diff origin/master..master^^</p>
-<p>If there are 5 revisions ahead or behind it might be easier to write like this:</p>
-<p>git diff master..origin/master~5 git diff origin/master..master~5</p>
-<h1 id="Git-Branching-Basic-Branching-and-Merging"><a href="#Git-Branching-Basic-Branching-and-Merging" class="headerlink" title="Git Branching - Basic Branching and Merging"></a>Git Branching - Basic Branching and Merging</h1><p><a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging" target="_blank" rel="external">https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging</a></p>
-<h1 id="Get-changes-from-master-into-branch-in-git"><a href="#Get-changes-from-master-into-branch-in-git" class="headerlink" title="Get changes from master into branch in git"></a><a href="http://stackoverflow.com/questions/5340724/get-changes-from-master-into-branch-in-git" target="_blank" rel="external">Get changes from master into branch in git</a></h1><p>Checkout the aq branch, then rebase from master.</p>
-<p>git checkout aq</p>
-<p>git rebase master</p>
-<h1 id="Git-Branching-Rebasing"><a href="#Git-Branching-Rebasing" class="headerlink" title="Git Branching - Rebasing"></a>Git Branching - Rebasing</h1><p><a href="https://git-scm.com/book/en/v2/Git-Branching-Rebasing" target="_blank" rel="external">https://git-scm.com/book/en/v2/Git-Branching-Rebasing</a></p>
+<h4 id="Git-Delete-a-branch-local-or-remote"><a href="#Git-Delete-a-branch-local-or-remote" class="headerlink" title="Git: Delete a branch (local or remote)"></a>Git: Delete a branch (local or remote)</h4><p>To delete a local branch<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="_">-d</span> the_<span class="built_in">local</span>_branch</span><br></pre></td></tr></table></figure></p>
+<p>To remove a remote branch (if you know what you are doing!)<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> :the_remote_branch</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://christhai.github.io/2016/06/29/Git-Skills/" data-id="ciqi0lw8s0000p0lr0mnk3ru6" class="article-share-link">Share</a>
+      <a data-url="http://christhai.github.io/2016/06/29/Git-Skills/" data-id="ciql0eo5w0003ealrwkzcre14" class="article-share-link">Share</a>
       
         <a href="http://christhai.github.io/2016/06/29/Git-Skills/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -189,6 +195,10 @@
       <ul>
         
           <li>
+            <a href="/2016/07/13/Using-Elastic-Beanstalk-with-Amazon-CloudWatch-Logs/">Using Elastic Beanstalk with Amazon CloudWatch Logs</a>
+          </li>
+        
+          <li>
             <a href="/2016/07/11/Deploying-Applications-with-Elastic-Beanstalk/">Deploying Applications with Elastic Beanstalk</a>
           </li>
         
@@ -204,10 +214,6 @@
             <a href="/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/">Set up website on Elastic Beanstalk using Multi Container</a>
           </li>
         
-          <li>
-            <a href="/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/">Create and push php-fpm docker image on AWS ECR(Container Registry)</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -217,7 +223,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Amazon-AWS/" style="font-size: 20px;">Amazon AWS</a> <a href="/tags/Amazon-EC2-Container/" style="font-size: 10px;">Amazon EC2 Container</a> <a href="/tags/Amazon-Elastic-Beanstalk/" style="font-size: 10px;">Amazon Elastic Beanstalk</a> <a href="/tags/Devops/" style="font-size: 10px;">Devops</a> <a href="/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/tags/Elastic-Beanstalk/" style="font-size: 15px;">Elastic Beanstalk</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a>
+      <a href="/tags/Amazon-AWS/" style="font-size: 20px;">Amazon AWS</a> <a href="/tags/Amazon-CloudWatch/" style="font-size: 10px;">Amazon CloudWatch</a> <a href="/tags/Amazon-EC2-Container/" style="font-size: 10px;">Amazon EC2 Container</a> <a href="/tags/Amazon-Elastic-Beanstalk/" style="font-size: 10px;">Amazon Elastic Beanstalk</a> <a href="/tags/Devops/" style="font-size: 10px;">Devops</a> <a href="/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/tags/Elastic-Beanstalk/" style="font-size: 15px;">Elastic Beanstalk</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a>
     </div>
   </div>
 
@@ -226,7 +232,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
