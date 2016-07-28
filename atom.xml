@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://christhai.github.io/"/>
-  <updated>2016-07-13T14:12:08.000Z</updated>
+  <updated>2016-07-28T18:13:47.000Z</updated>
   <id>http://christhai.github.io/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Setup Highcharts Export Server using docker iamge</title>
+    <link href="http://christhai.github.io/2016/07/13/Setup-Highcharts-Export-Server-using-docker-iamge/"/>
+    <id>http://christhai.github.io/2016/07/13/Setup-Highcharts-Export-Server-using-docker-iamge/</id>
+    <published>2016-07-13T15:30:00.000Z</published>
+    <updated>2016-07-28T18:13:47.000Z</updated>
+    
+    <content type="html">&lt;p&gt;I build highcharts Export server with docker image when I work at Highsoft company, you can find it on official Github repo.&lt;br&gt;It is public and easy to use.&lt;/p&gt;
+&lt;h2 id=&quot;Building-Docker-image-from-source&quot;&gt;&lt;a href=&quot;#Building-Docker-image-from-source&quot; class=&quot;headerlink&quot; title=&quot;Building Docker image from source&quot;&gt;&lt;/a&gt;Building Docker image from source&lt;/h2&gt;&lt;p&gt;To build from source you need to clone the git repo and run docker build:&lt;/p&gt;
+&lt;figure class=&quot;highlight armasm&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;git&lt;/span&gt; clone https://github.com/highcharts/highcharts-&lt;span class=&quot;meta&quot;&gt;export&lt;/span&gt;-server.git&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;docker&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;build &lt;/span&gt;-t highcharts-&lt;span class=&quot;meta&quot;&gt;export&lt;/span&gt;-server:&amp;lt;TAG&amp;gt; .&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Please make sure that uncomment those lines regarding downloading highcharts.js in Dockerfile before you run docker build. Otherwise, Docker image won’t work.&lt;/p&gt;
+&lt;h2 id=&quot;Running&quot;&gt;&lt;a href=&quot;#Running&quot; class=&quot;headerlink&quot; title=&quot;Running&quot;&gt;&lt;/a&gt;Running&lt;/h2&gt;&lt;p&gt;To simply run the container:&lt;/p&gt;
+&lt;figure class=&quot;highlight applescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker &lt;span class=&quot;built_in&quot;&gt;run&lt;/span&gt; -p &lt;span class=&quot;number&quot;&gt;8080&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;8080&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;--rm -it highcharts-export-server:&amp;lt;TAG&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;You can then browse to http://&lt;docker_host&gt;:8080 to view the live export-server. To find your DOCKER_HOST use the docker inspect to get the IP address.&lt;/docker_host&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Custiomize-export-server&quot;&gt;&lt;a href=&quot;#Custiomize-export-server&quot; class=&quot;headerlink&quot; title=&quot;Custiomize export-server&quot;&gt;&lt;/a&gt;Custiomize export-server&lt;/h2&gt;&lt;h3 id=&quot;Choose-Highcharts-JS-version&quot;&gt;&lt;a href=&quot;#Choose-Highcharts-JS-version&quot; class=&quot;headerlink&quot; title=&quot;Choose Highcharts JS version&quot;&gt;&lt;/a&gt;Choose Highcharts JS version&lt;/h3&gt;&lt;p&gt;Within Dockerfile, you can declare the specific version of highcharts you gonna use and specific js modules as well.&lt;br&gt;For licensing reasons, it’s recommended to use the highcharts compiled files from code.highcharts.com/[highcharts-version-you-use]/&lt;br&gt;and when you use them, you acknowledge that you own highcharts license.&lt;/p&gt;
+&lt;p&gt;In Dockerfile,  find these lines and config the specific modules you gonna include docker container or not.&lt;br&gt;&lt;figure class=&quot;highlight dockerfile&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;ENV&lt;/span&gt; HIGHCHARTS_VERSION &lt;span class=&quot;number&quot;&gt;4.2&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;RUN&lt;/span&gt; &lt;span class=&quot;bash&quot;&gt;wget http://code.highcharts.com/&lt;span class=&quot;variable&quot;&gt;$HIGHCHARTS_VERSION&lt;/span&gt;/highcharts.js \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;amp;&amp;amp;  wget http://code.highcharts.com/stock/&lt;span class=&quot;variable&quot;&gt;$HIGHCHARTS_VERSION&lt;/span&gt;/highstock.js \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;amp;&amp;amp;  wget http://code.highcharts.com/maps/&lt;span class=&quot;variable&quot;&gt;$HIGHCHARTS_VERSION&lt;/span&gt;/highmaps.js&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Add-Fonts&quot;&gt;&lt;a href=&quot;#Add-Fonts&quot; class=&quot;headerlink&quot; title=&quot;Add Fonts&quot;&gt;&lt;/a&gt;Add Fonts&lt;/h3&gt;&lt;p&gt;You can find more fonts online and place them in this location /fonts/usr/share/fonts&lt;br&gt;Note that you have to be responsible of authorization of using some fonts&lt;/p&gt;
+&lt;h3 id=&quot;Build-your-own-docker-image-to-Dockerhub&quot;&gt;&lt;a href=&quot;#Build-your-own-docker-image-to-Dockerhub&quot; class=&quot;headerlink&quot; title=&quot;Build your own docker image to Dockerhub&quot;&gt;&lt;/a&gt;Build your own docker image to Dockerhub&lt;/h3&gt;&lt;p&gt;Build docker image&lt;br&gt;&lt;figure class=&quot;highlight armasm&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ docker &lt;span class=&quot;keyword&quot;&gt;build &lt;/span&gt;-t &amp;lt;DOCKER_HUB&amp;gt;/highcharts-&lt;span class=&quot;meta&quot;&gt;export&lt;/span&gt;-prod:&lt;span class=&quot;number&quot;&gt;424&lt;/span&gt; .&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Run it&lt;br&gt;&lt;figure class=&quot;highlight applescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ docker &lt;span class=&quot;built_in&quot;&gt;run&lt;/span&gt; -p &lt;span class=&quot;number&quot;&gt;8080&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;8080&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;--rm -it  &amp;lt;DOCKER_HUB&amp;gt;/highcharts-export-prod:424&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I build highcharts Export server with docker image when I work at Highsoft company, you can find it on official Github repo.&lt;br&gt;It is pub
+    
+    </summary>
+    
+    
+      <category term="Docker" scheme="http://christhai.github.io/tags/Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>Using Elastic Beanstalk with Amazon CloudWatch Logs</title>
@@ -159,7 +191,7 @@
     <link href="http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/"/>
     <id>http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/</id>
     <published>2016-07-04T19:00:49.000Z</published>
-    <updated>2016-07-11T12:37:55.000Z</updated>
+    <updated>2016-07-11T12:37:54.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;Set-up-website-on-Elastic-Beanstalk-using-Multi-Container-PHP-FPM-Nginx&quot;&gt;&lt;a href=&quot;#Set-up-website-on-Elastic-Beanstalk-using-Multi-Container-PHP-FPM-Nginx&quot; class=&quot;headerlink&quot; title=&quot;Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)&quot;&gt;&lt;/a&gt;Set up website on Elastic Beanstalk using Multi Container (PHP-FPM + Nginx)&lt;/h2&gt;&lt;p&gt;This guide shows you how to setup WebApp  on Elastic Beanstalk using the [PHP-FPM]and [Nginx] Docker images.&lt;/p&gt;
 &lt;h2 id=&quot;The-procedure-of-making-this-work&quot;&gt;&lt;a href=&quot;#The-procedure-of-making-this-work&quot; class=&quot;headerlink&quot; title=&quot;The procedure of making this work&quot;&gt;&lt;/a&gt;The procedure of making this work&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;#heading=h.rilr6oluuna3&quot;&gt;First step, covert docker compose file to Dockerrun.aws.json&lt;/a&gt;&lt;/p&gt;
@@ -254,7 +286,7 @@
     <link href="http://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/"/>
     <id>http://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/</id>
     <published>2016-06-29T19:08:16.000Z</published>
-    <updated>2016-07-11T12:37:07.000Z</updated>
+    <updated>2016-07-11T12:37:06.000Z</updated>
     
     <content type="html">&lt;p&gt;You can store your custom Docker images in AWS with &lt;a href=&quot;http://aws.amazon.com/ecr&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Amazon EC2 Container Registry&lt;/a&gt; (Amazon ECR). When you store your Docker images in Amazon ECR, Elastic Beanstalk automatically authenticates to the Amazon ECR registry with your environment’s &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts-roles.html#concepts-roles-instance&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;instance profile&lt;/a&gt;, so you don’t need to &lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_docker.container.console.html#docker-images-private&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;generate an authentication file&lt;/a&gt; and upload it to Amazon Simple Storage Service (Amazon S3)&lt;/p&gt;
 &lt;p&gt;The official tutorial is here,&lt;/p&gt;

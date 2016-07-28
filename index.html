@@ -61,6 +61,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Setup-Highcharts-Export-Server-using-docker-iamge" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/13/Setup-Highcharts-Export-Server-using-docker-iamge/" class="article-date">
+  <time datetime="2016-07-13T15:30:00.000Z" itemprop="datePublished">2016-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/13/Setup-Highcharts-Export-Server-using-docker-iamge/">Setup Highcharts Export Server using docker iamge</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I build highcharts Export server with docker image when I work at Highsoft company, you can find it on official Github repo.<br>It is public and easy to use.</p>
+<h2 id="Building-Docker-image-from-source"><a href="#Building-Docker-image-from-source" class="headerlink" title="Building Docker image from source"></a>Building Docker image from source</h2><p>To build from source you need to clone the git repo and run docker build:</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">git</span> clone https://github.com/highcharts/highcharts-<span class="meta">export</span>-server.git</span><br><span class="line"><span class="symbol">docker</span> <span class="keyword">build </span>-t highcharts-<span class="meta">export</span>-server:&lt;TAG&gt; .</span><br></pre></td></tr></table></figure>
+<p>Please make sure that uncomment those lines regarding downloading highcharts.js in Dockerfile before you run docker build. Otherwise, Docker image won’t work.</p>
+<h2 id="Running"><a href="#Running" class="headerlink" title="Running"></a>Running</h2><p>To simply run the container:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">run</span> -p <span class="number">8080</span>:<span class="number">8080</span> <span class="comment">--rm -it highcharts-export-server:&lt;TAG&gt;</span></span><br></pre></td></tr></table></figure>
+<p>You can then browse to http://<docker_host>:8080 to view the live export-server. To find your DOCKER_HOST use the docker inspect to get the IP address.</docker_host></p>
+<h2 id="Custiomize-export-server"><a href="#Custiomize-export-server" class="headerlink" title="Custiomize export-server"></a>Custiomize export-server</h2><h3 id="Choose-Highcharts-JS-version"><a href="#Choose-Highcharts-JS-version" class="headerlink" title="Choose Highcharts JS version"></a>Choose Highcharts JS version</h3><p>Within Dockerfile, you can declare the specific version of highcharts you gonna use and specific js modules as well.<br>For licensing reasons, it’s recommended to use the highcharts compiled files from code.highcharts.com/[highcharts-version-you-use]/<br>and when you use them, you acknowledge that you own highcharts license.</p>
+<p>In Dockerfile,  find these lines and config the specific modules you gonna include docker container or not.<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ENV</span> HIGHCHARTS_VERSION <span class="number">4.2</span>.<span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span> <span class="bash">wget http://code.highcharts.com/<span class="variable">$HIGHCHARTS_VERSION</span>/highcharts.js \</span><br><span class="line">&amp;&amp;  wget http://code.highcharts.com/stock/<span class="variable">$HIGHCHARTS_VERSION</span>/highstock.js \</span><br><span class="line">&amp;&amp;  wget http://code.highcharts.com/maps/<span class="variable">$HIGHCHARTS_VERSION</span>/highmaps.js</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Add-Fonts"><a href="#Add-Fonts" class="headerlink" title="Add Fonts"></a>Add Fonts</h3><p>You can find more fonts online and place them in this location /fonts/usr/share/fonts<br>Note that you have to be responsible of authorization of using some fonts</p>
+<h3 id="Build-your-own-docker-image-to-Dockerhub"><a href="#Build-your-own-docker-image-to-Dockerhub" class="headerlink" title="Build your own docker image to Dockerhub"></a>Build your own docker image to Dockerhub</h3><p>Build docker image<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="keyword">build </span>-t &lt;DOCKER_HUB&gt;/highcharts-<span class="meta">export</span>-prod:<span class="number">424</span> .</span><br></pre></td></tr></table></figure></p>
+<p>Run it<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">run</span> -p <span class="number">8080</span>:<span class="number">8080</span> <span class="comment">--rm -it  &lt;DOCKER_HUB&gt;/highcharts-export-prod:424</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://christhai.github.io/2016/07/13/Setup-Highcharts-Export-Server-using-docker-iamge/" data-id="cir6n302n0007n70g76l0k0nx" class="article-share-link">Share</a>
+      
+        <a href="http://christhai.github.io/2016/07/13/Setup-Highcharts-Export-Server-using-docker-iamge/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Using-Elastic-Beanstalk-with-Amazon-CloudWatch-Logs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/07/13/Using-Elastic-Beanstalk-with-Amazon-CloudWatch-Logs/" class="article-date">
@@ -95,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://christhai.github.io/2016/07/13/Using-Elastic-Beanstalk-with-Amazon-CloudWatch-Logs/" data-id="ciql0eo650008ealr85e7o3sf" class="article-share-link">Share</a>
+      <a data-url="http://christhai.github.io/2016/07/13/Using-Elastic-Beanstalk-with-Amazon-CloudWatch-Logs/" data-id="cir6n302x000bn70g2usgvy2y" class="article-share-link">Share</a>
       
         <a href="http://christhai.github.io/2016/07/13/Using-Elastic-Beanstalk-with-Amazon-CloudWatch-Logs/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -141,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://christhai.github.io/2016/07/11/Deploying-Applications-with-Elastic-Beanstalk/" data-id="ciql0eo5t0001ealrmd4gt5xr" class="article-share-link">Share</a>
+      <a data-url="http://christhai.github.io/2016/07/11/Deploying-Applications-with-Elastic-Beanstalk/" data-id="cir6n30260000n70g8qzp63ym" class="article-share-link">Share</a>
       
         <a href="http://christhai.github.io/2016/07/11/Deploying-Applications-with-Elastic-Beanstalk/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -188,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://christhai.github.io/2016/07/07/TEST-DOCKER-CLOUD-TUTUM-CD-AUTO-TOOL/" data-id="ciql0eo610006ealr9zz1z7d8" class="article-share-link">Share</a>
+      <a data-url="http://christhai.github.io/2016/07/07/TEST-DOCKER-CLOUD-TUTUM-CD-AUTO-TOOL/" data-id="cir6n302k0006n70gysw4i9zo" class="article-share-link">Share</a>
       
         <a href="http://christhai.github.io/2016/07/07/TEST-DOCKER-CLOUD-TUTUM-CD-AUTO-TOOL/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -234,7 +286,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://christhai.github.io/2016/07/04/Using-EB-CLI/" data-id="ciql0eo620007ealrpi736fbh" class="article-share-link">Share</a>
+      <a data-url="http://christhai.github.io/2016/07/04/Using-EB-CLI/" data-id="cir6n302p0008n70gtwwp55kd" class="article-share-link">Share</a>
       
         <a href="http://christhai.github.io/2016/07/04/Using-EB-CLI/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -285,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/" data-id="ciql0eo5y0004ealrt0uz8ijn" class="article-share-link">Share</a>
+      <a data-url="http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/" data-id="cir6n302h0004n70gfzg7sgnf" class="article-share-link">Share</a>
       
         <a href="http://christhai.github.io/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -334,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/" data-id="ciql0eo5o0000ealriddd1sye" class="article-share-link">Share</a>
+      <a data-url="http://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/" data-id="cir6n302b0001n70g6jkg87m4" class="article-share-link">Share</a>
       
         <a href="http://christhai.github.io/2016/06/29/Create-a-new-php-fpm-docker-image-on-AWS-ECR/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -392,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://christhai.github.io/2016/06/29/Git-Skills/" data-id="ciql0eo5w0003ealrwkzcre14" class="article-share-link">Share</a>
+      <a data-url="http://christhai.github.io/2016/06/29/Git-Skills/" data-id="cir6n302f0003n70g8h1up09q" class="article-share-link">Share</a>
       
         <a href="http://christhai.github.io/2016/06/29/Git-Skills/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -421,6 +473,10 @@
       <ul>
         
           <li>
+            <a href="/2016/07/13/Setup-Highcharts-Export-Server-using-docker-iamge/">Setup Highcharts Export Server using docker iamge</a>
+          </li>
+        
+          <li>
             <a href="/2016/07/13/Using-Elastic-Beanstalk-with-Amazon-CloudWatch-Logs/">Using Elastic Beanstalk with Amazon CloudWatch Logs</a>
           </li>
         
@@ -436,10 +492,6 @@
             <a href="/2016/07/04/Using-EB-CLI/">Using EB CLI</a>
           </li>
         
-          <li>
-            <a href="/2016/07/04/Set-up-website-on-Elastic-Beanstalk-using-Multi-Container/">Set up website on Elastic Beanstalk using Multi Container</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -449,7 +501,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Amazon-AWS/" style="font-size: 20px;">Amazon AWS</a> <a href="/tags/Amazon-CloudWatch/" style="font-size: 10px;">Amazon CloudWatch</a> <a href="/tags/Amazon-EC2-Container/" style="font-size: 10px;">Amazon EC2 Container</a> <a href="/tags/Amazon-Elastic-Beanstalk/" style="font-size: 10px;">Amazon Elastic Beanstalk</a> <a href="/tags/Devops/" style="font-size: 10px;">Devops</a> <a href="/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/tags/Elastic-Beanstalk/" style="font-size: 15px;">Elastic Beanstalk</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a>
+      <a href="/tags/Amazon-AWS/" style="font-size: 20px;">Amazon AWS</a> <a href="/tags/Amazon-CloudWatch/" style="font-size: 10px;">Amazon CloudWatch</a> <a href="/tags/Amazon-EC2-Container/" style="font-size: 10px;">Amazon EC2 Container</a> <a href="/tags/Amazon-Elastic-Beanstalk/" style="font-size: 10px;">Amazon Elastic Beanstalk</a> <a href="/tags/Devops/" style="font-size: 10px;">Devops</a> <a href="/tags/Docker/" style="font-size: 16.67px;">Docker</a> <a href="/tags/Elastic-Beanstalk/" style="font-size: 13.33px;">Elastic Beanstalk</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a>
     </div>
   </div>
 
@@ -458,7 +510,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
